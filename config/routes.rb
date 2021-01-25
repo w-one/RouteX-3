@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :notes
   devise_for :users
   resources :users, only: [:show]
   resources :spots do

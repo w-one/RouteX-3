@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RouteX</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-top">
+        <h1>Route X</h1>
+        <ul>
+          <% if user_signed_in? %>
+            <li><%= link_to user_path(current_user.id) do %></li>
+              <i class="fas fa-user-circle"></i>
+            <% end %>
+          <% else %>
+            <li><%= link_to "Sign up", new_user_registration_path %></li>
+            <li><%= link_to "Login", new_user_session_path %></li>
+          <% end %> 
+        </ul>
+      </div>
+      <div class="header-list">
+        
+      </div>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+    <footer>
+
+    </footer>
+    
+  </body>
+</html>

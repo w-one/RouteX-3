@@ -1,0 +1,19 @@
+<%= image_tag @user.image_url, size: "90x90" if @user.image? %>
+<h1>名前 : <%= @user.nickname %></h1>
+<p><%= @user.username %></p>
+<p>プロフィール : <%= @user.profile %></p>
+
+<% if current_user.id == @user.id %>
+  <%= link_to "編集する", edit_user_registration_path %>
+<% end %>
+
+<h3>スポット投稿一覧</h3>
+<% @user.spots.each do |t| %>
+  <%= t.user.username %>
+  <%= image_tag t.image_url, size: "250x200" if t.image? %>
+  <%= t.text %>
+<% end %>
+
+<% if user_signed_in? %>
+  <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+<% end %>

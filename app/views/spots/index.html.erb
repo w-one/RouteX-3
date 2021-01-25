@@ -1,0 +1,40 @@
+
+<%= form_tag spots_path, method: :get, class: 'boards__searchForm' do %>
+<%= select_tag :tag_id,
+                options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+                {
+                  prompt: 'タグで絞り込み検索',
+                  onchange: 'submit(this.form);'
+                }
+%>
+<% end %>
+
+<%= link_to "投稿", new_spot_path %>
+
+<div class="spots-container">
+  <% @spots.each do |t| %>
+    <div class="spot">
+    <a href="/users/<%= t.user.id %>"><%= t.user.username %></a>
+    <%= image_tag t.image_url, size: "250x200" if t.image? %>
+    <%= t.text %>
+    <%= link_to "詳細へ", spot_path(t.id) %>
+
+    <% if user_signed_in? %>
+      <% if current_user.already_liked?(t) %>
+        <%= link_to spot_like_path(id: t.id, spot_id: t.id), method: :delete do %>
+          <i class="fas fa-heart"></i><%= t.likes.count %>
+        <% end %>
+      <% else %>
+        <%= link_to spot_likes_path(id: t.id, spot_id: t.id), method: :post do %>
+          <i class="fas fa-heart"></i><%= t.likes.count %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <i class="fas fa-heart"></i><%= t.likes.count %>
+    <% end %>
+
+    </div>
+  <% end %>      
+</div>
+
+

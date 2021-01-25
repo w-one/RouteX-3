@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<h1>How To</h1>
+
+
+  <tbody>
+    <% @how_tos.each do |how_to| %>
+      <tr>
+        <td><%= how_to.user_id %></td>
+        <td><%= how_to.title %></td>
+        <td><%= how_to.content %></td>
+        <td><%= video_tag how_to.video_url ,:controls => true ,:loop => true ,:autoplay => true if how_to.video?%></td>
+        <td><%= image_tag how_to.image_url, size: "250x200" if how_to.image? %></td>
+        <td><%= link_to 'Show', how_to %></td>
+        <td><%= link_to 'Edit', edit_how_to_path(how_to) %></td>
+        <td><%= link_to 'Destroy', how_to, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New How To', new_how_to_path %>

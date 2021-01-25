@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
   
-  resources :how_tos
-  resources :notes
+
+  root 'home#index'
+  
   devise_for :users
   resources :users, only: [:show]
+  resources :how_tos do
+    resources :fights, only: [:create, :destroy]
+  end
+  resources :notes
   resources :spots do
     resources :likes, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]

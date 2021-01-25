@@ -6,11 +6,27 @@
   <tbody>
     <% @how_tos.each do |how_to| %>
       <tr>
-        <td><%= how_to.user_id %></td>
+        <td> <a href="/users/<%= how_to.user.id %>"><%= how_to.user.username %></a></td>
         <td><%= how_to.title %></td>
         <td><%= how_to.content %></td>
         <td><%= video_tag how_to.video_url ,:controls => true ,:loop => true ,:autoplay => true if how_to.video?%></td>
         <td><%= image_tag how_to.image_url, size: "250x200" if how_to.image? %></td>
+
+        <% if user_signed_in? %>
+          <% if current_user.already_fought?(how_to) %>
+            <%= link_to how_to_fight_path(id: how_to.id, how_to_id: how_to.id), method: :delete do %>
+              <i class="fas fa-fire-alt"></i><%= how_to.fights.count %>
+            <% end %>
+          <% else %>
+            <%= link_to how_to_fights_path(id: how_to.id, how_to_id: how_to.id), method: :post do %>
+              <i class="far fa-fire-alt"></i><%= how_to.fights.count %>
+            <% end %>
+          <% end %>
+        <% else %>
+          <i class="far fa-fire-alt"></i><%= how_to.fights.count %>
+        <% end %>
+
+
         <td><%= link_to 'Show', how_to %></td>
         <td><%= link_to 'Edit', edit_how_to_path(how_to) %></td>
         <td><%= link_to 'Destroy', how_to, method: :delete, data: { confirm: 'Are you sure?' } %></td>

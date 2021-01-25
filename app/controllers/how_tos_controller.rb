@@ -22,7 +22,7 @@ class HowTosController < ApplicationController
   # POST /how_tos or /how_tos.json
   def create
     @how_to = HowTo.new(how_to_params)
-
+    @how_to.user_id = current_user.id
     respond_to do |format|
       if @how_to.save
         format.html { redirect_to @how_to, notice: "How to was successfully created." }

@@ -1,4 +1,4 @@
-<%= image_tag @user.image_url, size: "90x90" if @user.image? %>
+<%= image_tag @user.profile_image_url, size: "90x90" if @user.image? %>
 <h1>名前 : <%= @user.nickname %></h1>
 <p><%= @user.username %></p>
 <p>プロフィール : <%= @user.profile %></p>

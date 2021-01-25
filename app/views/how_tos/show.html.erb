@@ -2,7 +2,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @how_to.user_id %>
+  <a href="/users/<%= @how_to.user.id %>"><%= @how_to.user.username %></a>
 </p>
 
 <p>
@@ -24,6 +24,27 @@
   <strong>Image:</strong>
   <%= image_tag @how_to.image_url, size: "250x200" if @how_to.image? %>
 </p>
+
+<% if user_signed_in? %>
+    <% if current_user.already_fought?(@how_to) %>
+        <%= link_to how_to_fight_path(@how_to), method: :delete do %>
+          <i class="fas fa-fire-alt"></i><%= @how_to.fights.count %>
+        <% end %>
+    <% else %>
+        <%= link_to how_to_fights_path(@how_to), method: :post do %>
+            <i class="far fa-fire-alt"></i><%= @how_to.fights.count %>
+        <% end %>
+    <% end %>
+<% else %>
+    <i class="far fa-fire-alt"></i><%= @how_to.fights.count %>
+<% end %>
+
+</div>
+
+<h2>いいねしたユーザー</h2>
+<% @how_to.fought_users.each do |user| %>
+  <li><%= user.username %></li>
+<% end %>
 
 <%= link_to 'Edit', edit_how_to_path(@how_to) %> |
 <%= link_to 'Back', how_tos_path %>

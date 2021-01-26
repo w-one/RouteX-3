@@ -21,7 +21,7 @@ class User < ApplicationRecord
   has_many :notes, dependent: :destroy
   has_many :archives, dependent: :destroy
   has_many :archived_notes, through: :archives, source: :note
-
+  # has_many :questions, dependent: :destroy
   def already_archived?(note)
     self.archives.exists?(note_id: note.id)
   end

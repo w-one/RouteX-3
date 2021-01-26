@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   
-
   root 'home#index'
   
   devise_for :users
@@ -18,6 +17,7 @@ Rails.application.routes.draw do
 
   resources :notes do
     resources :archives, only: [:create, :destroy]
+    # resources :questions, only: [:create, :destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

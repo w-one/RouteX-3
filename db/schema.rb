@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_26_065153) do
+ActiveRecord::Schema.define(version: 2021_01_26_074525) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -116,6 +116,16 @@ ActiveRecord::Schema.define(version: 2021_01_26_065153) do
     t.index ["tag_id"], name: "index_post_tag_relations_on_tag_id"
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.string "content"
+    t.integer "user_id", null: false
+    t.integer "note_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["note_id"], name: "index_questions_on_note_id"
+    t.index ["user_id"], name: "index_questions_on_user_id"
+  end
+
   create_table "spots", force: :cascade do |t|
     t.integer "user_id"
     t.text "text"
@@ -160,4 +170,6 @@ ActiveRecord::Schema.define(version: 2021_01_26_065153) do
   add_foreign_key "likes", "users"
   add_foreign_key "post_tag_relations", "spots"
   add_foreign_key "post_tag_relations", "tags"
+  add_foreign_key "questions", "notes"
+  add_foreign_key "questions", "users"
 end

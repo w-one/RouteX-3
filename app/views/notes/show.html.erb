@@ -1,5 +1,8 @@
-< id="notice"><%= notice %></>
-
+<%= link_to 'Edit', edit_note_path %> |
+<%= link_to 'Back', notes_path %>
+<br>
+<p id="notice"><%= notice %></p>
+<br>
 <% if user_signed_in? %>
   <% if current_user.already_archived?(@note) %>
     <%= link_to note_archive_path(@note), method: :delete do %>
@@ -23,7 +26,3 @@
   <strong>Content:</strong>
   <%= @note.content %>
 </p>
-
-
-<%= link_to 'Edit', edit_note_path(@note) %> |
-<%= link_to 'Back', notes_path %>

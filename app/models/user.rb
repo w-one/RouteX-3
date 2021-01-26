@@ -18,6 +18,14 @@ class User < ApplicationRecord
     self.fights.exists?(how_to_id: how_to.id)
   end
 
+  has_many :notes, dependent: :destroy
+  has_many :archives, dependent: :destroy
+  has_many :archived_notes, through: :archives, source: :note
+
+  def already_archived?(note)
+    self.archives.exists?(note_id: note.id)
+  end
+
   devise :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable
 

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   
   devise_for :users
   resources :users, only: [:show]
+
   resources :how_tos do
     resources :fights, only: [:create, :destroy]
     resources :advices, only: [:create, :destroy]
@@ -15,6 +16,8 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
 
-    resources :notes
+  resources :notes do
+    resources :archives, only: [:create, :destroy]
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

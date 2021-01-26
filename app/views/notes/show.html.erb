@@ -1,4 +1,18 @@
-<p id="notice"><%= notice %></p>
+< id="notice"><%= notice %></>
+
+<% if user_signed_in? %>
+  <% if current_user.already_archived?(@note) %>
+    <%= link_to note_archive_path(@note), method: :delete do %>
+      <i class="fas fa-save"></i><%= @note.archives.count %>
+    <% end %>
+  <% else %>
+    <%= link_to note_archives_path(@note), method: :post do %>
+      <i class="far fa-save"></i><%= @note.archives.count %>
+    <% end %>
+  <% end %>
+<% else %>
+  <i class="far fa-save"></i><%= @note.archives.count %>
+<% end %>
 
 <p>
   <strong>Title:</strong>
@@ -9,6 +23,7 @@
   <strong>Content:</strong>
   <%= @note.content %>
 </p>
+
 
 <%= link_to 'Edit', edit_note_path(@note) %> |
 <%= link_to 'Back', notes_path %>

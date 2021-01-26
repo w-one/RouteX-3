@@ -2,6 +2,7 @@
 
 <h1>How To</h1>
 
+<h3><%= link_to 'New', new_how_to_path %></h3>
 
   <tbody>
     <% @how_tos.each do |how_to| %>
@@ -28,8 +29,6 @@
 
 
         <td><%= link_to 'Show', how_to %></td>
-        <td><%= link_to 'Edit', edit_how_to_path(how_to) %></td>
-        <td><%= link_to 'Destroy', how_to, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

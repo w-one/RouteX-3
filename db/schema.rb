@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_26_000107) do
+ActiveRecord::Schema.define(version: 2021_01_26_065153) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -51,6 +51,15 @@ ActiveRecord::Schema.define(version: 2021_01_26_000107) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["how_to_id"], name: "index_advices_on_how_to_id"
     t.index ["user_id"], name: "index_advices_on_user_id"
+  end
+
+  create_table "archives", force: :cascade do |t|
+    t.integer "note_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["note_id"], name: "index_archives_on_note_id"
+    t.index ["user_id"], name: "index_archives_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -141,6 +150,8 @@ ActiveRecord::Schema.define(version: 2021_01_26_000107) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "advices", "how_tos"
   add_foreign_key "advices", "users"
+  add_foreign_key "archives", "notes"
+  add_foreign_key "archives", "users"
   add_foreign_key "comments", "spots"
   add_foreign_key "comments", "users"
   add_foreign_key "fights", "how_tos"

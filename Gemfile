@@ -60,3 +60,7 @@ gem 'cloudinary'
 gem 'dotenv-rails'
 
 gem 'actiontext'
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.6'
+end

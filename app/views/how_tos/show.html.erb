@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<%= link_to 'Back', how_tos_path %>
 <p>
   <strong>User:</strong>
   <a href="/users/<%= @how_to.user.id %>"><%= @how_to.user.username %></a>
@@ -25,8 +25,10 @@
   <%= image_tag @how_to.image_url, size: "250x200" if @how_to.image? %>
 </p>
 
-<%= link_to 'Edit', edit_how_to_path(@how_to) %> 
-<%= link_to 'Back', how_tos_path %>
+<% if user_signed_in? && current_user.id == @how_to.user_id %>  
+  <%= link_to 'Edit', edit_how_to_path(@how_to) %> 
+  <%= link_to "削除する", how_to_path, method: :delete %>
+<% end %>
 
 <% if user_signed_in? %>
     <% if current_user.already_fought?(@how_to) %>

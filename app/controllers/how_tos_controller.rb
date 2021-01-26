@@ -1,69 +1,54 @@
 class HowTosController < ApplicationController
-  before_action :set_how_to, only: %i[ show edit update destroy ]
-
-  # GET /how_tos or /how_tos.json
+  
   def index
     @how_tos = HowTo.all
   end
 
-  # GET /how_tos/1 or /how_tos/1.json
-  def show
-  end
-
-  # GET /how_tos/new
   def new
     @how_to = HowTo.new
   end
 
-  # GET /how_tos/1/edit
-  def edit
-  end
-
-  # POST /how_tos or /how_tos.json
   def create
-    @how_to = HowTo.new(how_to_params)
-    @how_to.user_id = current_user.id
-    respond_to do |format|
-      if @how_to.save
-        format.html { redirect_to @how_to, notice: "How to was successfully created." }
-        format.json { render :show, status: :created, location: @how_to }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @how_to.errors, status: :unprocessable_entity }
-      end
+    how_to = HowTo.new(how_to_params)
+    how_to.user_id = current_user.id
+    if how_to.save!
+      redirect_to :action => "index"
+    else
+      redirect_to :action => "new"
     end
   end
 
-  # PATCH/PUT /how_tos/1 or /how_tos/1.json
+  def show
+    @how_to = HowTo.find(params[:id])
+    @advices = @how_to.advices
+    @advice = Advice.new
+  end
+
+  def edit
+    @how_to = HowTo.find(params[:id])
+  end
+
   def update
-    respond_to do |format|
-      if @how_to.update(how_to_params)
-        format.html { redirect_to @how_to, notice: "How to was successfully updated." }
-        format.json { render :show, status: :ok, location: @how_to }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @how_to.errors, status: :unprocessable_entity }
-      end
+    how_to = HowTo.find(params[:id])
+    if how_to.update(how_to_params)
+      redirect_to :action => "show", :id => how_to.id
+    else
+      redirect_to :action => "edit"
     end
   end
 
-  # DELETE /how_tos/1 or /how_tos/1.json
   def destroy
-    @how_to.destroy
-    respond_to do |format|
-      format.html { redirect_to how_tos_url, notice: "How to was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    how_to = HowTo.find(params[:id])
+    how_to.destroy
+    redirect_to action: :index
   end
+
+  
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_how_to
-      @how_to = HowTo.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def how_to_params
-      params.require(:how_to).permit(:user_id, :title, :content, :video, :image)
-    end
+  def how_to_params
+    params.require(:how_to).permit(:title, :content, :image, :video)
+  end
+
 end

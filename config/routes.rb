@@ -7,12 +7,14 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :how_tos do
     resources :fights, only: [:create, :destroy]
+    resources :advices, only: [:create, :destroy]
   end
-  resources :notes
+  
   resources :spots do
     resources :likes, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
   end
 
+    resources :notes
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

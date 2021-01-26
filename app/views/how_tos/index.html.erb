@@ -9,7 +9,7 @@
         <td> <a href="/users/<%= how_to.user.id %>"><%= how_to.user.username %></a></td>
         <td><%= how_to.title %></td>
         <td><%= how_to.content %></td>
-        <td><%= video_tag how_to.video_url ,:controls => true ,:loop => true ,:autoplay => true if how_to.video?%></td>
+        <td><%= video_tag how_to.video_url ,:controls => true ,:loop => true if how_to.video?%></td>
         <td><%= image_tag how_to.image_url, size: "250x200" if how_to.image? %></td>
 
         <% if user_signed_in? %>

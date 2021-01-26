@@ -9,6 +9,11 @@
         <%= tag.name %>
       <% end %>
 
+      <% if user_signed_in? && current_user.id == @spot.user_id %>  
+        <%= link_to "編集する", edit_spot_path %>
+        <%= link_to "削除する", spot_path, method: :delete %>
+      <% end %>
+      
       <% if user_signed_in? %>
         <% if current_user.already_liked?(@spot) %>
           <%= link_to spot_like_path(@spot), method: :delete do %>
@@ -23,10 +28,6 @@
       <i class="fas fa-heart"></i><%= @spot.likes.count %>
       <% end %>
 
-      <% if user_signed_in? && current_user.id == @spot.user_id %>  
-        <%= link_to "編集する", edit_spot_path %>
-        <%= link_to "削除する", spot_path, method: :delete %>
-      <% end %>
 
       </div>
 

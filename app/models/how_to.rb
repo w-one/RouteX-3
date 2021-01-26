@@ -6,4 +6,6 @@ class HowTo < ApplicationRecord
 
   has_many :fights, dependent: :destroy
   has_many :fought_users, through: :fights, source: :user
+  
+  has_many :advices, dependent: :destroy
 end

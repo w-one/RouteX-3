@@ -25,6 +25,9 @@
   <%= image_tag @how_to.image_url, size: "250x200" if @how_to.image? %>
 </p>
 
+<%= link_to 'Edit', edit_how_to_path(@how_to) %> 
+<%= link_to 'Back', how_tos_path %>
+
 <% if user_signed_in? %>
     <% if current_user.already_fought?(@how_to) %>
         <%= link_to how_to_fight_path(@how_to), method: :delete do %>
@@ -46,5 +49,27 @@
   <li><%= user.username %></li>
 <% end %>
 
-<%= link_to 'Edit', edit_how_to_path(@how_to) %> |
-<%= link_to 'Back', how_tos_path %>
+<div class="advice-wrapper">
+  <p>コメント一覧</p>
+  <% @advices.each do |c| %>
+    <div>
+      <a href="/users/<%= @how_to.user.id %>"><%= c.user.username unless c.user.blank? %></a>
+      <br>
+      <%= c.content %>
+      <br>
+      <%= link_to '削除', how_to_advice_path(@how_to, c), method: :delete %>
+    </div>
+      <br>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <%= form_with(model: [@how_to, @advice], local: true) do |f| %>
+      <%= f.text_area :content %>
+      <%= button_tag type: "submit" do %>
+        <i class="far fa-advices"></i> コメントする
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+

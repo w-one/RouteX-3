@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :how_tos, dependent: :destroy
   has_many :fights, dependent: :destroy
   has_many :fought_how_tos, through: :fights, source: :how_to
-
+  has_many :advices, dependent: :destroy
   def already_fought?(how_to)
     self.fights.exists?(how_to_id: how_to.id)
   end

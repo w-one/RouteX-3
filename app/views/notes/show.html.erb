@@ -5,8 +5,8 @@
 <br>
 <%= link_to 'Back', notes_path %>
 <br>
+  <a href="/users/<%= @note.user.id %>"><%= image_tag @note.user.profile_image_url, size: "30x30" if @note.user.profile_image? %></a>
   <a href="/users/<%= @note.user.id %>"><%= @note.user.username %></a>
-
 <br>
 <p id="notice"><%= notice %></p>
 <br>

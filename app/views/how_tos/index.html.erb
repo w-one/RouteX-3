@@ -2,11 +2,17 @@
 
 <h1>How To</h1>
 
+<%= form_tag({controller:"how_tos",action:"index"}, method: :get) do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag '検索する'  %>
+<% end %>
+
 <h3><%= link_to 'New', new_how_to_path %></h3>
 
   <tbody>
     <% @how_tos.each do |how_to| %>
       <tr>
+        <td> <a href="/users/<%= how_to.user.id %>"><%= image_tag how_to.user.profile_image_url, size: "30x30" if how_to.user.profile_image? %></a></td>
         <td> <a href="/users/<%= how_to.user.id %>"><%= how_to.user.username %></a></td>
         <td><a href="/how_tos/<%= how_to.id %>"><%= how_to.title %></a></td>
         <td><a href="/how_tos/<%= how_to.id %>"><%= how_to.content %></a></td>

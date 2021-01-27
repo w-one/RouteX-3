@@ -1,7 +1,13 @@
 class HowTosController < ApplicationController
   
   def index
-    @how_tos = HowTo.all
+    if params[:search] == nil
+      @how_tos= HowTo.all
+    elsif params[:search] == ''
+      @how_tos= HowTo.all
+    else
+      @how_tos = HowTo.where("title LIKE ? ",'%' + params[:search] + '%').or(HowTo.where("content LIKE ? ", "%" + params[:search] + "%"))
+    end
   end
 
   def new

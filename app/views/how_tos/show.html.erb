@@ -1,27 +1,23 @@
 <p id="notice"><%= notice %></p>
 <%= link_to 'Back', how_tos_path %>
 <p>
-  <strong>User:</strong>
+  <a href="/users/<%= @how_to.user.id %>"><%= image_tag @how_to.user.profile_image_url, size: "30x30" if @how_to.user.profile_image? %></a>
   <a href="/users/<%= @how_to.user.id %>"><%= @how_to.user.username %></a>
 </p>
 
 <p>
-  <strong>Title:</strong>
   <%= @how_to.title %>
 </p>
 
 <p>
-  <strong>Content:</strong>
   <%= @how_to.content %>
 </p>
 
 <p>
-  <strong>Video:</strong>
   <%= video_tag @how_to.video_url ,:controls => true ,:loop => true ,:autoplay => true if @how_to.video?%>
 </p>
 
 <p>
-  <strong>Image:</strong>
   <%= image_tag @how_to.image_url, size: "250x200" if @how_to.image? %>
 </p>
 
@@ -55,11 +51,14 @@
   <p>コメント一覧</p>
   <% @advices.each do |c| %>
     <div>
+      <a href="/users/<%= @how_to.user.id %>"><%= image_tag c.user.profile_image_url, size: "30x30" if c.user.profile_image? %></a>
       <a href="/users/<%= @how_to.user.id %>"><%= c.user.username unless c.user.blank? %></a>
       <br>
       <%= c.content %>
       <br>
-      <%= link_to '削除', how_to_advice_path(@how_to, c), method: :delete %>
+      <% if user_signed_in? && current_user.id == c.user_id %>  
+        <%= link_to '削除', how_to_advice_path(@how_to, c), method: :delete %>
+      <% end %>
     </div>
       <br>
   <% end %>

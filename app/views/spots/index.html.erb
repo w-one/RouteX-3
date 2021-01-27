@@ -14,6 +14,7 @@
 <div class="spots-container">
   <% @spots.each do |t| %>
     <div class="spot">
+    <a href="/users/<%= t.user.id %>"><%= image_tag t.user.profile_image_url, size: "30x30" if t.user.profile_image? %></a></td>
     <a href="/users/<%= t.user.id %>"><%= t.user.username %></a>
     <a href="/spots/<%= t.id %>"><%= t.text %></a>
     <a href="/spots/<%= t.id %>"><%= image_tag t.image_url, size: "250x200" if t.image? %></a>

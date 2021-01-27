@@ -1,6 +1,7 @@
 <div class="spots-container">
   <%= link_to "戻る", spots_path %>
     <div class="spot">
+      <a href="/users/<%= @spot.user.id %>"><%= image_tag @spot.user.profile_image_url, size: "30x30" if @spot.user.profile_image? %></a></td>
       <a href="/users/<%= @spot.user.id %>"><%= @spot.user.username %></a>
       <%= image_tag @spot.image_url, size: "250x200" if @spot.image? %>
       <%= @spot.text %>
@@ -35,6 +36,7 @@
       <p>コメント一覧</p>
       <% @comments.each do |c| %>
         <div>
+          <a href="/users/<%= @spot.user.id %>"><%= image_tag c.user.profile_image_url, size: "30x30" if c.user.profile_image? %></a>
           <a href="/users/<%= @spot.user.id %>"><%= c.user.username unless c.user.blank? %></a>
           <br>
           <%= c.content %>

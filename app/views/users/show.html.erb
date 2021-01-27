@@ -1,9 +1,9 @@
 
 
 <%= image_tag @user.profile_image_url, size: "90x90" if @user.profile_image? %>
-<h1>名前 : <%= @user.nickname %></h1>
+<h1><%= @user.nickname %></h1>
 <p><%= @user.username %></p>
-<p>プロフィール : <%= @user.profile %></p>
+<p><%= @user.profile %></p>
 
 <% if current_user.id == @user.id %>
   <%= link_to "編集する", edit_user_registration_path %>
@@ -11,11 +11,22 @@
 
 <%= render 'relationships/follow_button', user: @user %>
 
-<h3>スポット投稿一覧</h3>
+<h3>Spot</h3>
 <% @user.spots.each do |t| %>
-  <%= t.user.username %>
-  <%= image_tag t.image_url, size: "250x200" if t.image? %>
-  <%= t.text %>
+  <a href="/spots/<%= t.id %>"><%= t.text %></a>
+  <a href="/spots/<%= t.id %>"><%= image_tag t.image_url, size: "250x200" if t.image? %></a>
+<% end %>
+
+<h3>Video</h3>
+<% @user.how_tos.each do |t| %>
+  <a href="/how_tos/<%= t.id %>"><%= t.title %></a>
+  <a href="/how_tos/<%= t.id %>"><%= video_tag t.video_url ,:controls => true ,:loop => true if t.video?%></a>
+  <a href="/how_tos/<%= t.id %>"><%= image_tag t.image_url, size: "250x200" if t.image? %></a>
+<% end %>
+
+<h3>Note</h3>
+<% @user.notes.each do |t| %>
+  <a href="/notes/<%= t.id %>"><%= t.title %></a>
 <% end %>
 
 <% if user_signed_in? %>

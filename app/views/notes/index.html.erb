@@ -11,8 +11,8 @@
   <% @notes.each do |note| %>
     <div class="note">
       <a href="/users/<%= note.user.id %>"><%= note.user.username %></a>
-      <h3><%= note.title %></h3>
-      <%= link_to 'Show', note %>
+      <h3><a href="/notes/<%= note.id %>"><%= note.title %></a></h3>
+      
       <i class="far fa-save"></i><%= note.archives.count %>
     </div>
   <% end %>

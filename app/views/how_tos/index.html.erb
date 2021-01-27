@@ -8,10 +8,10 @@
     <% @how_tos.each do |how_to| %>
       <tr>
         <td> <a href="/users/<%= how_to.user.id %>"><%= how_to.user.username %></a></td>
-        <td><%= how_to.title %></td>
-        <td><%= how_to.content %></td>
-        <td><%= video_tag how_to.video_url ,:controls => true ,:loop => true if how_to.video?%></td>
-        <td><%= image_tag how_to.image_url, size: "250x200" if how_to.image? %></td>
+        <td><a href="/how_tos/<%= how_to.id %>"><%= how_to.title %></a></td>
+        <td><a href="/how_tos/<%= how_to.id %>"><%= how_to.content %></a></td>
+        <td><a href="/how_tos/<%= how_to.id %>"><%= video_tag how_to.video_url ,:controls => true ,:loop => true if how_to.video?%></a></td>
+        <td><a href="/how_tos/<%= how_to.id %>"><%= image_tag how_to.image_url, size: "250x200" if how_to.image? %></a></td>
 
         <% if user_signed_in? %>
           <% if current_user.already_fought?(how_to) %>
@@ -28,7 +28,8 @@
         <% end %>
 
 
-        <td><%= link_to 'Show', how_to %></td>
+        
+        
       </tr>
     <% end %>
   </tbody>
@@ -36,4 +37,4 @@
 
 <br>
 
-<%= link_to 'New How To', new_how_to_path %>
+

@@ -15,9 +15,8 @@
   <% @spots.each do |t| %>
     <div class="spot">
     <a href="/users/<%= t.user.id %>"><%= t.user.username %></a>
-    <%= image_tag t.image_url, size: "250x200" if t.image? %>
-    <%= t.text %>
-    <%= link_to "詳細へ", spot_path(t.id) %>
+    <a href="/spots/<%= t.id %>"><%= t.text %></a>
+    <a href="/spots/<%= t.id %>"><%= image_tag t.image_url, size: "250x200" if t.image? %></a>
 
     <% if user_signed_in? %>
       <% if current_user.already_liked?(t) %>

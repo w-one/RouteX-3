@@ -1,11 +1,18 @@
 class NotesController < ApplicationController
   
   def index
-    @notes = Note.all
+    if params[:search] == nil
+      @notes= Note.all
+    elsif params[:search] == ''
+      @notes= Note.all
+    else
+      @notes = Note.where("title LIKE ? ",'%' + params[:search] + '%')
+    end
   end
 
   def new
     @note = Note.new
+    
   end
 
   def create
@@ -20,6 +27,7 @@ class NotesController < ApplicationController
 
   def show
     @note = Note.find(params[:id])
+
     # @questions = @note.questions
     # @question = Question.new
   end
@@ -43,7 +51,6 @@ class NotesController < ApplicationController
     redirect_to action: :index
   end
 
-  
 
   private
 

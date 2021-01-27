@@ -2,9 +2,10 @@
   <%= link_to 'Edit', edit_note_path %> 
   <%= link_to "削除する", note_path(@note.id), method: :delete %>
 <% end %>
-
+<br>
 <%= link_to 'Back', notes_path %>
-
+<br>
+  <a href="/users/<%= @note.user.id %>"><%= @note.user.username %></a>
 
 <br>
 <p id="notice"><%= notice %></p>
@@ -32,3 +33,5 @@
   <strong>Content:</strong>
   <%= @note.content %>
 </p>
+
+

@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   root 'home#index'
   
   devise_for :users
-  resources :users, only: [:create, :edit, :destroy, :show]
+  resources :users, only: [:create, :edit, :destroy, :show] do
+    get :search, on: :collection
+  end
 
   resources :how_tos do
     resources :fights, only: [:create, :destroy]
@@ -19,6 +21,7 @@ Rails.application.routes.draw do
     resources :archives, only: [:create, :destroy]
     # resources :questions, only: [:create, :destroy]
   end
+  
 
   resources :relationships, only: [:create, :destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

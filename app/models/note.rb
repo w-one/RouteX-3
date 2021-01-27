@@ -5,6 +5,7 @@ class Note < ApplicationRecord
 
   has_many :archives, dependent: :destroy
   has_many :archived_users, through: :archives, source: :user
-
   # has_many :questions, dependent: :destroy
+
+
 end

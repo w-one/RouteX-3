@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_26_135300) do
+ActiveRecord::Schema.define(version: 2021_01_26_235455) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -81,6 +81,22 @@ ActiveRecord::Schema.define(version: 2021_01_26_135300) do
     t.index ["user_id"], name: "index_fights_on_user_id"
   end
 
+  create_table "hashtag_notes", force: :cascade do |t|
+    t.integer "note_id", null: false
+    t.integer "hashtag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["hashtag_id"], name: "index_hashtag_notes_on_hashtag_id"
+    t.index ["note_id"], name: "index_hashtag_notes_on_note_id"
+  end
+
+  create_table "hashtags", force: :cascade do |t|
+    t.string "hashname"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["hashname"], name: "index_hashtags_on_hashname", unique: true
+  end
+
   create_table "how_tos", force: :cascade do |t|
     t.integer "user_id"
     t.string "title"
@@ -106,6 +122,7 @@ ActiveRecord::Schema.define(version: 2021_01_26_135300) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.text "hashbody"
   end
 
   create_table "post_tag_relations", force: :cascade do |t|
@@ -177,6 +194,8 @@ ActiveRecord::Schema.define(version: 2021_01_26_135300) do
   add_foreign_key "comments", "users"
   add_foreign_key "fights", "how_tos"
   add_foreign_key "fights", "users"
+  add_foreign_key "hashtag_notes", "hashtags"
+  add_foreign_key "hashtag_notes", "notes"
   add_foreign_key "likes", "spots"
   add_foreign_key "likes", "users"
   add_foreign_key "post_tag_relations", "spots"

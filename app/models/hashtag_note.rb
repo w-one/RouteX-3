@@ -1,0 +1,3 @@
+class HashtagNote < ApplicationRecord
+
+end

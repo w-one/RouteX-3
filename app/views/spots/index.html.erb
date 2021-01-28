@@ -34,7 +34,11 @@
         <% end %>
       <% end %>
     <% else %>
-      <i class="fas fa-heart"></i><%= t.likes.count %>
+      <%= link_to new_user_session_path do %>
+        <%= link_to new_user_session_path do %>
+          <i class="far fa-heart"></i><%= t.likes.count %>
+        <% end %>
+      <% end %>
     <% end %>
 
     </div>

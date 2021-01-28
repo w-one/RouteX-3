@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  get 'maps/index'
   root 'home#index'
   
   devise_for :users, controllers: {
@@ -22,10 +23,12 @@ Rails.application.routes.draw do
 
   resources :notes do
     resources :archives, only: [:create, :destroy]
-    # resources :questions, only: [:create, :destroy]
+    resources :questions, only: [:create, :destroy]
   end
   
 
   resources :relationships, only: [:create, :destroy]
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

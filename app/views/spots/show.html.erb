@@ -10,20 +10,27 @@
           <%= tag.name %>
         <% end %>
 
+      <% if user_signed_in? %>
         <%= link_to "編集する", edit_spot_path %>
+      <% else %>
+        <%= link_to "編集する", new_user_session_path %>
+      <% end %>
+        
       
         <% if user_signed_in? %>
           <% if current_user.already_liked?(@spot) %>
             <%= link_to spot_like_path(@spot), method: :delete do %>
-            <i class="fas fa-heart"></i><%= @spot.likes.count %>
+              <i class="fas fa-heart"></i><%= @spot.likes.count %>
             <% end %>
           <% else %>
             <%= link_to spot_likes_path(@spot), method: :post do %>
-              <i class="fas fa-heart"></i><%= @spot.likes.count %>
+              <i class="far fa-heart"></i><%= @spot.likes.count %>
             <% end %>
           <% end %>
         <% else %>
-          <i class="fas fa-heart"></i><%= @spot.likes.count %>
+          <%= link_to new_user_session_path do %>
+            <i class="far fa-heart"></i><%= @spot.likes.count %>
+          <% end %>
         <% end %>
 
 
@@ -36,52 +43,44 @@
           <a href="/users/<%= @spot.user.id %>"><%= image_tag c.user.profile_image_url, size: "30x30" if c.user.profile_image? %></a>
           <a href="/users/<%= @spot.user.id %>"><%= c.user.username unless c.user.blank? %></a>
           <br>
-          <p>評価 :<%= c.rate %>点</p>
-          <div id="star-rate-<%= c.id %>"></div>    
-          <script>
-            $('#star-rate<%= c.id%>').raty({
-              size      : 36,
-              starOff   : '<%= asset_path('star-off.png') %>',
-              starOn    : '<%= asset_path('star-on.png') %>',
-              half      : false,
-              readOnly: true,
-              score: <%= c.rate %>,
-            });
-          </script>
+          <span class="star-rating">
+            <span class="star-rating-front" style="width: <%= getPercent(c.rate) %>%;">★★★★★</span>
+            <span class="star-rating-back">★★★★★</span>
+          </span> 
+          <br>
           <%= c.content %>
           <br>
           <% if user_signed_in? && current_user.id == c.user_id %>  
             <%= link_to '削除', spot_comment_path(@spot, c), method: :delete %>
           <% end %>
         </div>
-          <br>
       <% end %>
-    
-      <% if user_signed_in? %>
+      
         <%= form_with(model: [@spot, @comment], local: true) do |f| %>
-          
-          <div class="form-group row" id="rate">
-            <%= f.label :rate,'評価 ' %>
-            <%= f.hidden_field :rate, id: :review_star %>
+          <div class="post_form">
+            <%= f.radio_button :rate, 5 ,id: 'star1'%>
+            <label for="star1">★</label>
+            
+            <%= f.radio_button :rate, 4 ,id: 'star2'%>
+            <label for="star2">★</label>
+            
+            <%= f.radio_button :rate, 3 ,id: 'star3'%>
+            <label for="star3">★</label>
+            
+            <%= f.radio_button :rate, 2 ,id: 'star4'%>
+            <label for="star4">★</label>
+            
+            <%= f.radio_button :rate, 1 ,id: 'star5'%>
+            <label for="star5">★</label>
           </div>
-        
-          <script>
-          $('#rate').raty({
-            size     : 36,
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-
-            scoreName: 'comment[rate]',
-            half: false,
-          });
-          </script>  
-          
           <%= f.text_area :content %>
-
-          <%= button_tag type: "submit" do %>
-            <i class="far fa-comments"></i> 送信 
+          <% if user_signed_in? %>
+            <%= button_tag type: "submit" do %>
+              <i class="far fa-comments"></i> 評価する
+            <% end %>
+          <% else %>
+            <%= link_to "評価する", new_user_session_path %>
           <% end %>
         <% end %>
-      <% end %>
     </div>
 </div>

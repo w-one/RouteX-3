@@ -21,4 +21,3 @@ require("trix")
 require("@rails/actiontext")
 
 window.$ = window.jQuery = require('jquery');
-require('packs/raty')

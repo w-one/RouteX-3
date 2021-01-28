@@ -5,11 +5,15 @@
 <p><%= @user.username %></p>
 <p><%= @user.profile %></p>
 
-<% if current_user.id == @user.id %>
-  <%= link_to "編集する", edit_user_registration_path %>
+<% if user_signed_in? %>
+  <% if current_user.id == @user.id %>
+    <%= link_to "編集する", edit_user_registration_path %>
+  <% end %>
+  <%= render 'relationships/follow_button', user: @user %>
 <% end %>
 
-<%= render 'relationships/follow_button', user: @user %>
+
+  
 
 <h3>Spot</h3>
 <% @user.spots.each do |t| %>

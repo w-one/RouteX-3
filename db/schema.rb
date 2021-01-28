@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_27_165643) do
+ActiveRecord::Schema.define(version: 2021_01_28_123322) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -115,6 +115,15 @@ ActiveRecord::Schema.define(version: 2021_01_27_165643) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["spot_id"], name: "index_likes_on_spot_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "maps", force: :cascade do |t|
+    t.integer "spot_id"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "notes", force: :cascade do |t|

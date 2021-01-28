@@ -63,14 +63,18 @@
       <br>
   <% end %>
 
-  <% if user_signed_in? %>
+
     <%= form_with(model: [@how_to, @advice], local: true) do |f| %>
       <%= f.text_area :content %>
-      <%= button_tag type: "submit" do %>
-        <i class="far fa-advices"></i> コメントする
+      <% if user_signed_in? %>
+        <%= button_tag type: "submit" do %>
+          <i class="far fa-comments"></i> 送信
+        <% end %>
+      <% else %>
+        <%= link_to "送信", new_user_session_path %>
       <% end %>
     <% end %>
-  <% end %>
+
 </div>
 
 

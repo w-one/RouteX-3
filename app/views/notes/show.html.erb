@@ -21,7 +21,9 @@
     <% end %>
   <% end %>
 <% else %>
-  <i class="far fa-save"></i><%= @note.archives.count %>
+  <%= link_to new_user_session_path do %>
+    <i class="far fa-save"></i><%= @note.archives.count %>
+  <% end %>
 <% end %>
 
 <p>
@@ -34,4 +36,31 @@
   <%= @note.content %>
 </p>
 
+<div class="question-wrapper">
+  <p>コメント一覧</p>
+  <% @questions.each do |c| %>
+    <div>
+      <a href="/users/<%= @note.user.id %>"><%= image_tag c.user.profile_image_url, size: "30x30" if c.user.profile_image? %></a>
+      <a href="/users/<%= @note.user.id %>"><%= c.user.username unless c.user.blank? %></a>
+      <br>
+      <%= c.content %>
+      <br>
+      <% if user_signed_in? && current_user.id == c.user_id %>  
+        <%= link_to '削除', note_question_path(@note, c), method: :delete %>
+      <% end %>
+    </div>
+  <% end %>
 
+
+    <%= form_with(model: [@note, @question], local: true) do |f| %>
+      <%= f.text_area :content %>
+      <% if user_signed_in? %>
+        <%= button_tag type: "submit" do %>
+          <i class="far fa-comments"></i> 送信
+        <% end %>
+      <% else %>
+        <%= link_to "送信", new_user_session_path %>
+      <% end %>
+    <% end %>
+
+</div>

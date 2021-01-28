@@ -12,7 +12,6 @@ class NotesController < ApplicationController
 
   def new
     @note = Note.new
-    
   end
 
   def create
@@ -27,9 +26,8 @@ class NotesController < ApplicationController
 
   def show
     @note = Note.find(params[:id])
-
-    # @questions = @note.questions
-    # @question = Question.new
+    @questions = @note.questions
+    @question = Question.new
   end
 
   def edit

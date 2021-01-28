@@ -7,7 +7,12 @@
   <%= submit_tag '検索する'  %>
 <% end %>
 
-<h3><%= link_to 'New', new_how_to_path %></h3>
+  <% if user_signed_in? %>
+    <%= link_to "投稿", new_how_to_path %>
+  <% else %>
+    <%= link_to "投稿", new_user_session_path %>
+  <% end %>
+
 
   <tbody>
     <% @how_tos.each do |how_to| %>

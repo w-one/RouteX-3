@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_26_235455) do
+ActiveRecord::Schema.define(version: 2021_01_27_165643) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2021_01_26_235455) do
     t.integer "spot_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "rate"
     t.index ["spot_id"], name: "index_comments_on_spot_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -161,6 +162,7 @@ ActiveRecord::Schema.define(version: 2021_01_26_235455) do
     t.string "map"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "rate"
   end
 
   create_table "tags", force: :cascade do |t|

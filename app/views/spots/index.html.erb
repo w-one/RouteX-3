@@ -9,7 +9,11 @@
 %>
 <% end %>
 
-<%= link_to "投稿", new_spot_path %>
+  <% if user_signed_in? %>
+    <%= link_to "投稿", new_spot_path %>
+  <% else %>
+    <%= link_to "投稿", new_user_session_path %>
+  <% end %>
 
 <div class="spots-container">
   <% @spots.each do |t| %>

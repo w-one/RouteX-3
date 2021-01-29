@@ -1,3 +1,167 @@
 // Place all the styles related to the notes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: DIN Condensed, "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ",
+    Meiryo, "ＭＳ Ｐゴシック", sans-serif;
+}
+
+header {
+  
+}
+
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 2px #333333;
+  height: 70px;
+  width: 100%;
+  margin: 0;
+  background-color: #ffffff;
+}
+
+.header-top {
+  font-family: DIN Condensed;
+  font-size: 30px;
+  margin-left: 50px;
+  padding-top: 15px;
+}
+
+.header-list {
+  justify-content: space-between;
+  align-items: center;
+  color: #333333;
+}
+
+.header-list ul {
+  display: flex;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header-list li {
+  margin-top: 0px;
+  list-style: none;
+  margin-bottom: 0px;
+  margin-left: 30px;
+}
+
+
+.header-list li.n-video a { 
+	display: inline-block;
+  transition: all .3s ease 0s;
+  background-color: #ffffff;
+  color: #333333;
+  font-size: 24px;
+}
+
+.header-list li.n-spot a { 
+	display: inline-block;
+  transition: all .3s ease 0s;
+  background-color: #ffffff;
+  color: #333333;
+  font-size: 24px;
+}
+
+.header-list li.n-note a { 
+	display: inline-block;
+  transition: all .3s ease 0s;
+  background-color: #ffffff;
+  color: #333333;
+  font-size: 35px;
+}
+
+
+.header-list li.n-video a:hover {
+	cursor: pointer;
+  transform: scale(1.4);
+  color: #333333;
+}
+
+.header-list li.n-spot a:hover {
+	cursor: pointer;
+  transform: scale(1.4);
+  color: #333333;
+}
+
+.header-list li.n-note a:hover {
+	cursor: pointer;
+  transform: scale(1.0);
+  color: #333333;
+}
+
+
+
+
+header a {
+  text-decoration: none; 
+}
+
+
+
+.header-middle ul {
+  display: flex;
+}
+
+.header-middle li {
+  font-size: 30px;
+  font-family: DIN Condensed;
+  list-style: none;
+  margin-right: 40px;
+  padding-top: 9px;
+}
+
+.header-end {
+  font-family: DIN Condensed;
+  margin-right: 40px;
+}
+
+.n-icon {
+  padding-top: 12px;
+  --ggs: 1.5;
+}
+
+.n-icon a {
+	display: inline-block;
+  transition: all .3s ease 0s;
+  background-color: #ffffff;
+  color: #333333;
+  text-decoration: none;
+}
+
+.n-icon a:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  background-color: #ffffff;
+  color: #333333;
+}
+
+
+
+.n-sign {
+  padding-top: 9px;
+  font-size: 30px;
+}
+
+.n-sign a {
+	display: inline-block;
+  transition: all .3s ease 0s;
+  background-color: #ffffff;
+  color: #333333;
+  font-size: 24px;
+  margin-right: 20px;
+}
+
+.n-sign a:hover {
+  cursor: pointer;
+  transform: scale(1.4);
+  color: #333333;
+  background-color: #ffffff;
+}

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href='https://cdn.jsdelivr.net/npm/css.gg/icons-compressed/icons.css' rel='stylesheet'>
-
+    
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %> 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -23,21 +23,21 @@
         <div class="header-middle">
           <div class="header-list">
             <ul>
-              <li class="video"><%= link_to "Video", how_tos_path %></li>
-              <li class="spot"><%= link_to "Spot", spots_path %></li>
-              <li class="note"><%= link_to "Note", notes_path %></li>
+              <li class="s-video"><%= link_to "Video", how_tos_path %></li>
+              <li class="s-spot"><%= link_to "Spot", spots_path %></li>
+              <li class="s-note"><%= link_to "Note", notes_path %></li>
             </ul>
           </div>
         </div>
         <div class="header-end">
           <% if user_signed_in? %>
-            <div class="icon">
+            <div class="s-icon">
               <%= link_to user_path(current_user.id) do %>
                 <i class="gg-home"></i> 
               <% end %> 
             </div>
           <% else %>
-            <div class="sign">
+            <div class="s-sign">
               <%= link_to "Sign up", new_user_registration_path %>
               <%= link_to "Login", new_user_session_path %>
             </div>

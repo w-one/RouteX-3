@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 
   resources :users, only: [:create, :edit, :destroy, :show] do
     get :search, on: :collection
+    member do
+      get 'userhowto'
+      get 'usernote'
+    end
   end
 
   resources :how_tos do

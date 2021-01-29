@@ -1,4 +1,5 @@
 class SpotsController < ApplicationController
+  layout 'spot'
 
   def index
     @spots = params[:tag_id].present? ? Tag.find(params[:tag_id]).spots : Spot.all

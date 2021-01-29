@@ -14,7 +14,7 @@
  *= require_self
  */
 
- * {
+ /* * {
   padding: 0;
   margin: 0;
 }
@@ -23,13 +23,18 @@ body {
     Meiryo, "ＭＳ Ｐゴシック", sans-serif;
 }
 
+header {
+  
+}
+
 .header-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: solid #333333;
+  border-bottom: solid 2px #333333;
   height: 70px;
   width: 100%;
+  margin: 0;
 }
 
 .header-top {
@@ -44,9 +49,29 @@ body {
   align-items: center;
 }
 
+.header-list a {
+  
+  background-color: #ffffff;
+  color: #333333;
+  display: inline-block;
+  padding: 5px;
+  margin: 0px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+.header-list a:hover {
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);
+  transform: translateY(-0.1875em);
+} 
+
+
+
 header a {
   text-decoration: none; 
 }
+
+
 
 .header-middle ul {
   display: flex;
@@ -66,10 +91,43 @@ header a {
 }
 
 .icon {
-  font-size: 40px;
+  padding-top: 12px;
+  --ggs: 1.5;
 }
+
+.icon a {
+  background-color: #ffffff;
+  color: #333333;
+  display: inline-block;
+  padding: 5px;
+  margin: 0px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+.icon a:hover {
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);
+  transform: translateY(-0.1875em);
+}
+
+
 
 .sign {
   padding-top: 9px;
   font-size: 30px;
 }
+
+.sign a {
+  background-color: #ffffff;
+  color: #333333;
+  display: inline-block;
+  padding: 5px;
+  margin: 0px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+.sign a:hover {
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);
+  transform: translateY(-0.1875em);
+} */

@@ -66,3 +66,5 @@ group :development, :test do
 end
 
 gem 'geocoder'
+
+gem 'active_hash'

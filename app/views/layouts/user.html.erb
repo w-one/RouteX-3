@@ -23,21 +23,21 @@
         <div class="header-middle">
           <div class="header-list">
             <ul>
-              <li class="video"><%= link_to "Video", how_tos_path %></li>
-              <li class="spot"><%= link_to "Spot", spots_path %></li>
-              <li class="note"><%= link_to "Note", notes_path %></li>
+              <li class="u-video"><%= link_to "Video", how_tos_path %></li>
+              <li class="u-spot"><%= link_to "Spot", spots_path %></li>
+              <li class="u-note"><%= link_to "Note", notes_path %></li>
             </ul>
           </div>
         </div>
         <div class="header-end">
           <% if user_signed_in? %>
-            <div class="icon">
+            <div class="u-icon">
               <%= link_to user_path(current_user.id) do %>
                 <i class="gg-home"></i> 
               <% end %> 
             </div>
           <% else %>
-            <div class="sign">
+            <div class="u-sign">
               <%= link_to "Sign up", new_user_registration_path %>
               <%= link_to "Login", new_user_session_path %>
             </div>

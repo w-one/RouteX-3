@@ -1,4 +1,3 @@
-
 <div class="userpage">
   <div class="usertop-container">
       <div class="profileimage">
@@ -22,18 +21,16 @@
         <% end %>
       </div>
   </div>
-  <div class="select-list">
-      <ul>
-        <li class="s-video"><%= link_to 'Video', userhowto_user_path %></li>   
-        <li class="s-spot"><%= link_to 'Spot', :controller => "users", :action => "show" %></li>
-        <li class="s-note"><%= link_to 'note', usernote_user_path %></li>      
-      </ul>
-  </div>
-
+      <div class="select-list">
+        <ul>
+          <li class="n-video"><%= link_to 'Video', userhowto_user_path %></li>   
+          <li class="n-spot"><%= link_to 'Spot', :controller => "users", :action => "show" %></li>
+          <li class="n-note"><%= link_to 'note', usernote_user_path %></li>      
+        </ul>
+      </div>
   
-  <% @user.spots.each do |t| %>
-    <a href="/spots/<%= t.id %>"><%= t.text %></a>
-    <a href="/spots/<%= t.id %>"><%= image_tag t.image_url, size: "250x200" if t.image? %></a>
+  <% @user.notes.each do |t| %>
+    <a href="/notes/<%= t.id %>"><%= t.title %></a>
   <% end %>
 
   <% if user_signed_in? %>

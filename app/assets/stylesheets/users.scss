@@ -1,3 +1,278 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+// You can use Sass (SCSS) here: https://saslang.com/
+
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: DIN Condensed, "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ",
+    Meiryo, "ＭＳ Ｐゴシック", sans-serif;
+}
+
+header {
+  
+}
+
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 2px #333333;
+  height: 70px;
+  width: 100%;
+  margin: 0;
+  background-color: #ffffff;
+}
+
+.header-top {
+  font-family: DIN Condensed;
+  font-size: 30px;
+  margin-left: 50px;
+  padding-top: 15px;
+}
+
+.header-list {
+  justify-content: space-between;
+  align-items: center;
+  color: #333333;
+}
+
+.header-list ul {
+  display: flex;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header-list li {
+  margin-top: 0px;
+  list-style: none;
+  margin-bottom: 0px;
+  margin-left: 30px;
+}
+
+
+.header-list li.u-video a { 
+	display: inline-block;
+  transition: all .3s ease 0s;
+  background-color: #ffffff;
+  color: #333333;
+  font-size: 24px;
+}
+
+.header-list li.u-spot a { 
+	display: inline-block;
+  transition: all .3s ease 0s;
+  background-color: #ffffff;
+  color: #333333;
+  font-size: 24px;
+}
+
+.header-list li.u-note a { 
+	display: inline-block;
+  transition: all .3s ease 0s;
+  background-color: #ffffff;
+  color: #333333;
+  font-size: 24px;
+}
+
+
+.header-list li.u-video a:hover {
+	cursor: pointer;
+  transform: scale(1.4);
+  color: #333333;
+}
+
+.header-list li.u-spot a:hover {
+	cursor: pointer;
+  transform: scale(1.4);
+  color: #333333;
+}
+
+.header-list li.u-note a:hover {
+	cursor: pointer;
+  transform: scale(1.4);
+  color: #333333;
+}
+
+
+
+
+header a {
+  text-decoration: none; 
+}
+
+
+
+.header-middle ul {
+  display: flex;
+}
+
+.header-middle li {
+  font-size: 30px;
+  font-family: DIN Condensed;
+  list-style: none;
+  margin-right: 40px;
+  padding-top: 9px;
+}
+
+.header-end {
+  font-family: DIN Condensed;
+  margin-right: 40px;
+}
+
+.u-icon {
+  padding-top: 12px;
+  --ggs: 1.8;
+}
+
+.u-icon a {
+	display: inline-block;
+  transition: all .3s ease 0s;
+  background-color: #ffffff;
+  color: #333333;
+  text-decoration: none;
+}
+
+.u-icon a:hover {
+  cursor: pointer;
+  transform: scale(1.0);
+  background-color: #ffffff;
+  color: #333333;
+}
+
+
+
+.u-sign {
+  padding-top: 9px;
+}
+
+.u-sign a {
+	display: inline-block;
+  transition: all .3s ease 0s;
+  background-color: #ffffff;
+  color: #333333;
+  font-size: 24px;
+  margin-right: 20px;
+}
+
+.u-sign a:hover {
+  cursor: pointer;
+  transform: scale(1.4);
+  color: #333333;
+  background-color: #ffffff;
+}
+
+
+
+.userpage a {
+  text-decoration: none;
+  font-family: DIN Condensed;
+  color: #333333;
+}
+
+.userpage {
+  width:700px;
+  min-height:300px;
+  color : #333333;
+  font-family: DIN Condensed;
+  margin: 0 auto;
+  background-color :#ffffff;
+}
+
+.usertop-container {
+  text-align: center;
+  display: flex;
+}
+
+.profileimage img {
+	width:90px;
+	height:90px;
+	object-fit:cover;
+  border-radius:50%;
+  margin-top: 20px;
+  margin-left: 60px;
+}
+
+.information {
+  margin-top: 30px;
+  margin-left: 30px;
+  text-align: left;
+}
+
+.information h1 {
+  font-size: 30px;
+}
+
+.information p {
+  font-size: 15px;
+  line-height: 25px;
+}
+
+.edit-follow {
+  margin-top: 25px;
+  margin-left: 140px;
+}
+
+.edit {
+  padding-top: 8px;
+  font-size: 15px;
+  
+}
+
+.edit a {
+  background-color: #ffffff;
+  color: #333333;
+  display: inline-block;
+  padding: 7px 15px 3px 15px;
+  margin: 0px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  border-radius: 50px;
+  border: solid 1px;
+}
+
+.edit a:hover {
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);
+  transform: translateY(-0.1875em);
+  border-radius: 50px;
+}
+
+.select-list {
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 680px;
+  border-top: solid 1px;
+  border-bottom: solid 1px;
+  
+}
+
+.select-list ul {
+  display: flex;
+  text-align: center;
+}
+
+.select-list li {
+  margin-top: 10px;
+  list-style: none;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 24px;
+}
+
+.select-list li a { 
+	display: inline-block;
+  transition: all .3s ease 0s;
+  background-color: #ffffff;
+  
+}
+
+.select-list li a:hover {
+	cursor: pointer;
+  transform: scale(1.4);
+}
+

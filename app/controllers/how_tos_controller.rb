@@ -1,4 +1,5 @@
 class HowTosController < ApplicationController
+  layout 'how_to'
   
   def index
     if params[:search] == nil

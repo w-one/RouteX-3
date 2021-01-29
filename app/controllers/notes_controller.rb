@@ -1,5 +1,6 @@
 class NotesController < ApplicationController
-  
+  layout 'note'
+
   def index
     if params[:search] == nil
       @notes= Note.all

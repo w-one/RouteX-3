@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   
-  get 'maps/index'
-  root 'home#index'
   
+  root 'home#index'
+  get 'home/show'
+  
+  get 'maps/index'
   devise_for :users, controllers: {
     registrations: "users/registrations",
   }

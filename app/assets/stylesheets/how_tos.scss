@@ -27,11 +27,24 @@ header {
   background-color: #ffffff;
 }
 
-.header-top {
+.header-top h1.v-top {
   font-family: DIN Condensed;
-  font-size: 30px;
   margin-left: 50px;
-  padding-top: 15px;
+  padding-top: 10px;
+}
+
+.header-top h1.v-top a {
+  display: inline-block;
+  transition: all .3s ease 0s;
+  background-color: #ffffff;
+  color: #333333;
+  font-size: 40px;
+}
+
+.header-top h1.v-top a:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  color: #333333;
 }
 
 .header-list {
@@ -39,6 +52,7 @@ header {
   align-items: center;
   color: #333333;
 }
+
 
 .header-list ul {
   display: flex;
@@ -60,7 +74,7 @@ header {
   transition: all .3s ease 0s;
   background-color: #ffffff;
   color: #333333;
-  font-size: 35px;
+  font-size: 33px;
 }
 
 .header-list li.v-spot a { 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_28_232227) do
+ActiveRecord::Schema.define(version: 2021_01_30_030525) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -98,6 +98,13 @@ ActiveRecord::Schema.define(version: 2021_01_28_232227) do
     t.index ["hashname"], name: "index_hashtags_on_hashname", unique: true
   end
 
+  create_table "homes", force: :cascade do |t|
+    t.float "lat"
+    t.float "lng"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "how_tos", force: :cascade do |t|
     t.integer "user_id"
     t.string "title"
@@ -173,6 +180,8 @@ ActiveRecord::Schema.define(version: 2021_01_28_232227) do
     t.datetime "updated_at", precision: 6, null: false
     t.float "rate"
     t.integer "location"
+    t.float "lat"
+    t.float "lng"
   end
 
   create_table "tags", force: :cascade do |t|

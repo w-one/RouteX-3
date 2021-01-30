@@ -12,25 +12,45 @@ body {
 }
 
 header {
-  
+  height: 70px;
+  width: 100%;
+  background-color: #e2e2e2;
+  margin: auto;
 }
 
 .header-wrapper {
+  position: fixed;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  text-align: center;
   border-bottom: solid 2px #333333;
   height: 70px;
-  width: 100%;
-  margin: 0;
+  max-width: 1000px;
+  min-width: 600px;
+  margin-right: auto;
+  margin-left: auto;
   background-color: #ffffff;
+  
 }
 
-.header-top {
+.header-top h1.u-top {
   font-family: DIN Condensed;
-  font-size: 30px;
   margin-left: 50px;
-  padding-top: 15px;
+  padding-top: 10px;
+}
+
+.header-top h1.u-top a {
+  display: inline-block;
+  transition: all .3s ease 0s;
+  background-color: #ffffff;
+  color: #333333;
+  font-size: 40px;
+}
+
+.header-top h1.u-top a:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  color: #333333;
 }
 
 .header-list {
@@ -143,8 +163,6 @@ header a {
   color: #333333;
 }
 
-
-
 .u-sign {
   padding-top: 9px;
 }
@@ -164,7 +182,6 @@ header a {
   color: #333333;
   background-color: #ffffff;
 }
-
 
 
 .userpage a {

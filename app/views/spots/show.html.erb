@@ -9,6 +9,39 @@
         <% @spot.tags.each do |tag| %>
           <%= tag.name %>
         <% end %>
+    </div>
+
+    <div id='map'></div>
+
+    <style>
+    #map {
+      height: 300px;
+      width: 500px;
+    }    
+    </style>
+
+    <!-- js部分 -->
+    <script>
+    //初期マップの設定
+    let map
+    let marker
+    function initMap(){
+      geocoder = new google.maps.Geocoder()
+
+      map = new google.maps.Map(document.getElementById('map'), {
+        center:  {lat: <%= @spot.lat %>, lng: <%= @spot.lng %>},
+        zoom: 15,
+      });
+
+      marker = new google.maps.Marker({
+        position:  {lat: <%= @spot.lat %>, lng: <%= @spot.lng %>},
+        map: map
+      });
+    }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBeGIpPwB4-NtPwa6iNtMCq08H5GxB00KM&callback=initMap" async defer></script>
+              
+
 
       <% if user_signed_in? %>
         <%= link_to "編集する", edit_spot_path %>
@@ -35,8 +68,6 @@
           <% end %>
         <% end %>
 
-
-      </div>
 
     <div class="comment-wrapper">
       <p>コメント一覧</p>

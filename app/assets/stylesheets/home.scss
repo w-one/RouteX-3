@@ -12,7 +12,7 @@ body {
 }
 
 header {
-  
+
 }
 
 .header-wrapper {
@@ -26,11 +26,24 @@ header {
   background-color: #ffffff;
 }
 
-.header-top {
+.header-top h1 {
   font-family: DIN Condensed;
-  font-size: 30px;
-  margin-left: 50px;
-  padding-top: 15px;
+  margin-left: 41px;
+  padding-top: 10px;
+}
+
+.header-top h1 a {
+  display: inline-block;
+  transition: all .3s ease 0s;
+  background-color: #ffffff;
+  color: #333333;
+  font-size: 47px;
+}
+
+.header-top h1 a:hover {
+  cursor: pointer;
+  transform: scale(1.0);
+  color: #333333;
 }
 
 .header-list {

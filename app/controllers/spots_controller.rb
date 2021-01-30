@@ -49,7 +49,7 @@ class SpotsController < ApplicationController
   private
 
   def spot_params
-    params.require(:spot).permit(:text, :image, tag_ids: [])
+    params.require(:spot).permit(:text, :image, :lat, :lng, tag_ids: [])
   end
   
 end

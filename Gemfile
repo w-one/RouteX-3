@@ -66,5 +66,6 @@ group :development, :test do
 end
 
 gem 'geocoder'
+gem 'gmaps4rails'
 
 gem 'active_hash'

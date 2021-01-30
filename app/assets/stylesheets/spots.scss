@@ -29,16 +29,23 @@ header {
   background-color: #ffffff;
 }
 
-.header-top {
+.header-top h1.s-top {
   font-family: DIN Condensed;
-  font-size: 30px;
   margin-left: 50px;
-  padding-top: 15px;
+  padding-top: 10px;
 }
 
-.header-list {
-  justify-content: space-between;
-  align-items: center;
+.header-top h1.s-top a {
+  display: inline-block;
+  transition: all .3s ease 0s;
+  background-color: #ffffff;
+  color: #333333;
+  font-size: 40px;
+}
+
+.header-top h1.s-top a:hover {
+  cursor: pointer;
+  transform: scale(1.2);
   color: #333333;
 }
 

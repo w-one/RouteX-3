@@ -103,6 +103,7 @@ GEM
     geocoder (1.6.4)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    gmaps4rails (2.1.2)
     http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
@@ -277,6 +278,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   geocoder
+  gmaps4rails
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   listen (~> 3.2)

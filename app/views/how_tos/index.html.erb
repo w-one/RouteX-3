@@ -1,51 +1,63 @@
 <p id="notice"><%= notice %></p>
 
-<h1>How To</h1>
-
-<%= form_tag({controller:"how_tos",action:"index"}, method: :get) do %>
-  <%= text_field_tag :search %>
-  <%= submit_tag '検索する'  %>
-<% end %>
-
-  <% if user_signed_in? %>
-    <%= link_to "投稿", new_how_to_path %>
-  <% else %>
-    <%= link_to "投稿", new_user_session_path %>
-  <% end %>
-
-
-  <tbody>
-    <% @how_tos.each do |how_to| %>
-      <tr>
-        <td> <a href="/users/<%= how_to.user.id %>"><%= image_tag how_to.user.profile_image_url, size: "30x30" if how_to.user.profile_image? %></a></td>
-        <td> <a href="/users/<%= how_to.user.id %>"><%= how_to.user.username %></a></td>
-        <td><a href="/how_tos/<%= how_to.id %>"><%= how_to.title %></a></td>
-        <td><a href="/how_tos/<%= how_to.id %>"><%= how_to.content %></a></td>
-        <td><a href="/how_tos/<%= how_to.id %>"><%= video_tag how_to.video_url ,:controls => true ,:loop => true if how_to.video?%></a></td>
-        <td><a href="/how_tos/<%= how_to.id %>"><%= image_tag how_to.image_url, size: "250x200" if how_to.image? %></a></td>
-
-        <% if user_signed_in? %>
-          <% if current_user.already_fought?(how_to) %>
-            <%= link_to how_to_fight_path(id: how_to.id, how_to_id: how_to.id), method: :delete do %>
-              <i class="fas fa-thumbs-up"></i><%= how_to.fights.count %>
-            <% end %>
-          <% else %>
-            <%= link_to how_to_fights_path(id: how_to.id, how_to_id: how_to.id), method: :post do %>
-              <i class="far fa-thumbs-up"></i><%= how_to.fights.count %>
-            <% end %>
-          <% end %>
-        <% else %>
-          <i class="far fa-thumbs-up"></i><%= how_to.fights.count %>
+<div class="v-main">
+  <div class="main-top">
+    <div class="search">
+      <%= form_tag({controller:"how_tos",action:"index"}, method: :get) do %>
+        <%= text_field_tag :search %>
+        <%= submit_tag 'search'  %>
+      <% end %>
+    </div>
+    <div class="new">
+      <% if user_signed_in? %>
+        <%= link_to new_how_to_path do %>
+          <i class="gg-add-r"></i>
         <% end %>
+      <% else %>
+        <%= link_to new_user_session_path do %>
+          <i class="gg-add-r"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+      <div class="video-container">
+        <% @how_tos.each do |how_to| %>
+          <div class="video-contents">
+            <div class="contents-user">
+              <div class="v-userimage"><a href="/users/<%= how_to.user.id %>"><%= image_tag how_to.user.profile_image_url, size: "30x30" if how_to.user.profile_image? %></a></div>
+              <div class="v-username"><a href="/users/<%= how_to.user.id %>"><%= how_to.user.username %></a></div>
+            </div>
+            <div class="contents-video">
+              <a href="/how_tos/<%= how_to.id %>"><%= video_tag how_to.video_url, size: "600x337" ,:controls => true ,:loop => true, autoplay: true , muted: true if how_to.video?%></a>
+            </div>
+            <div class="contents-text">
+              <div class="v-contents-text">
+                <div class="v-text-title">
+                  <a href="/how_tos/<%= how_to.id %>"><%= how_to.title %></a>
+                </div>
+                <div class="v-text-contents">
+                  <a href="/how_tos/<%= how_to.id %>"><%= how_to.content %></a>
+                </div>
+              </div>
+                <div class="text-fight">
+                  <% if user_signed_in? %>
+                    <% if current_user.already_fought?(how_to) %>
+                      <%= link_to how_to_fight_path(id: how_to.id, how_to_id: how_to.id), method: :delete do %>
+                        <i class="fas fa-thumbs-up"></i><%= how_to.fights.count %>
+                      <% end %>
+                    <% else %>
+                      <%= link_to how_to_fights_path(id: how_to.id, how_to_id: how_to.id), method: :post do %>
+                        <i class="far fa-thumbs-up"></i><%= how_to.fights.count %>
+                      <% end %>
+                    <% end %>
+                  <% else %>
+                    <i class="far fa-thumbs-up"></i><%= how_to.fights.count %>
+                  <% end %>
+                </div>
+              
+            </div>
+          </div>
+        <% end %>
+      </div>
 
-
-        
-        
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-
+</div>

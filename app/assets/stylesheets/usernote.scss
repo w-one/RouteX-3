@@ -6,7 +6,8 @@
 }
 
 .userpage {
-  width:700px;
+  max-width:900px;
+  min-width: 700px;
   min-height:300px;
   color : #333333;
   font-family: DIN Condensed;
@@ -76,7 +77,8 @@
   margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
-  width: 680px;
+  max-width:900px;
+  min-width: 700px;
   border-top: solid 1px;
   border-bottom: solid 1px;
   
@@ -136,4 +138,32 @@
 	cursor: pointer;
   transform: scale(1.0);
   color: #333333;
+}
+
+.user-note-container {
+  
+  margin: auto 50px 20px 50px;
+  border-bottom: solid 1px #333333;
+}
+
+.user-note-title {
+  font-size: 25px;
+  font-weight: bold;
+  margin: 10px 20px;
+}
+
+.user-note-title a {
+  color: #333333;
+  text-decoration: none;
+}
+
+.user-note-title a:hover {
+  text-decoration: none;
+  color: #333333;
+  background-color: #ffffff;
+}
+
+.user-note-archive {
+  margin: 10px 20px;
+  font-size: 20px;
 }

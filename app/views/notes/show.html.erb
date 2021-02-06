@@ -1,66 +1,92 @@
-<% if user_signed_in? && current_user.id == @note.user_id %>  
-  <%= link_to 'Edit', edit_note_path %> 
-  <%= link_to "削除する", note_path(@note.id), method: :delete %>
-<% end %>
-<br>
-<%= link_to 'Back', notes_path %>
-<br>
-  <a href="/users/<%= @note.user.id %>"><%= image_tag @note.user.profile_image_url, size: "30x30" if @note.user.profile_image? %></a>
-  <a href="/users/<%= @note.user.id %>"><%= @note.user.username %></a>
-<br>
 <p id="notice"><%= notice %></p>
-<br>
-<% if user_signed_in? %>
-  <% if current_user.already_archived?(@note) %>
-    <%= link_to note_archive_path(@note), method: :delete do %>
-      <i class="fas fa-save"></i><%= @note.archives.count %>
-    <% end %>
-  <% else %>
-    <%= link_to note_archives_path(@note), method: :post do %>
-      <i class="far fa-save"></i><%= @note.archives.count %>
-    <% end %>
-  <% end %>
-<% else %>
-  <%= link_to new_user_session_path do %>
-    <i class="far fa-save"></i><%= @note.archives.count %>
-  <% end %>
-<% end %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @note.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @note.content %>
-</p>
-
-<div class="question-wrapper">
-  <p>コメント一覧</p>
-  <% @questions.each do |c| %>
-    <div>
-      <a href="/users/<%= @note.user.id %>"><%= image_tag c.user.profile_image_url, size: "30x30" if c.user.profile_image? %></a>
-      <a href="/users/<%= @note.user.id %>"><%= c.user.username unless c.user.blank? %></a>
-      <br>
-      <%= c.content %>
-      <br>
-      <% if user_signed_in? && current_user.id == c.user_id %>  
-        <%= link_to '削除', note_question_path(@note, c), method: :delete %>
-      <% end %>
+<div class="n-main">
+  <div class="main-top">
+    <div class="n-show-user">
+      <div class="n-show-userimage">
+        <a href="/users/<%= @note.user.id %>"><%= image_tag @note.user.profile_image_url, size: "30x30" if @note.user.profile_image? %></a>
+      </div>
+      <div class="show-username">
+        <a href="/users/<%= @note.user.id %>"><%= @note.user.username %></a>
+      </div>
     </div>
-  <% end %>
-
-
-    <%= form_with(model: [@note, @question], local: true) do |f| %>
-      <%= f.text_area :content %>
-      <% if user_signed_in? %>
-        <%= button_tag type: "submit" do %>
-          <i class="far fa-comments"></i> 送信
+    <div class="n-show-right">
+      <div class="n-edit-delete">
+        <% if user_signed_in? && current_user.id == @note.user_id %>  
+          <%= link_to '編集', edit_note_path %> 
+          <%= link_to "削除", note_path(@note.id), method: :delete %>
         <% end %>
-      <% else %>
-        <%= link_to "送信", new_user_session_path %>
-      <% end %>
-    <% end %>
+      </div>
+    </div>
+  </div>      
+  <div class="n-show-content">
+    <div class="n-show-title">
+      <%= @note.title %>
+    </div>
+    <div class="n-show-archive-container">
+      <div class="n-show-archive">
+        <% if user_signed_in? %>
+          <% if current_user.already_archived?(@note) %>
+            <%= link_to note_archive_path(@note), method: :delete do %>
+              <i class="fas fa-save"></i><%= @note.archives.count %>
+            <% end %>
+          <% else %>
+            <%= link_to note_archives_path(@note), method: :post do %>
+              <i class="far fa-save"></i><%= @note.archives.count %>
+            <% end %>
+          <% end %>
+        <% else %>
+          <%= link_to new_user_session_path do %>
+            <i class="far fa-save"></i><%= @note.archives.count %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="show-contents-text">
+      <%= @note.content %>
+    </div>
 
+    <div class="question-wrapper">
+      <p>コメント一覧</p>
+      <div class="question-contents">
+        <% @questions.each do |c| %>
+            <div class="question-show">
+              <div class="question-left">
+                <div class="question-user">
+                  <div class="question-userimage">
+                    <a href="/users/<%= @note.user.id %>"><%= image_tag c.user.profile_image_url, size: "30x30" if c.user.profile_image? %></a>
+                  </div>
+                  <div class="question-username">
+                    <a href="/users/<%= @note.user.id %>"><%= c.user.username unless c.user.blank? %></a>
+                  </div>
+                </div>
+                <div class="question-body">
+                  <%= c.content %>
+                </div>
+              </div>
+              <div class="question-right">
+                <% if user_signed_in? && current_user.id == c.user_id %>  
+                  <%= link_to '削除', note_question_path(@note, c), method: :delete %>
+                <% end %>
+              </div>
+            </div>
+        <% end %>
+            <div class="question-form">
+              <%= form_with(model: [@note, @question], local: true) do |f| %>
+                <%= f.text_area :content, size: "60x2" %>
+                <% if user_signed_in? %>
+                  <%= button_tag type: "submit" do %>
+                    <div class="submit-button">
+                      <i class="far fa-comments"></i> 送信
+                    </div>
+                  <% end %>
+                <% else %>
+                  <%= link_to "送信", new_user_session_path %>
+                <% end %>
+              <% end %>
+            </div>
+      </div>
+    </div>
+  
+  </div>
 </div>

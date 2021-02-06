@@ -1,39 +1,49 @@
-<%= form_with(model: how_to, local: true) do |form| %>
-  <% if how_to.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(how_to.errors.count, "error") %> prohibited this how_to from being saved:</h2>
+<div class="form-container">
+  <div class="form-contents">
 
-      <ul>
-        <% how_to.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+      <%= form_with(model: how_to, local: true) do |form| %>
+        <% if how_to.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(how_to.errors.count, "error") %> prohibited this how_to from being saved:</h2>
+
+            <ul>
+              <% how_to.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
         <% end %>
-      </ul>
-    </div>
-  <% end %>
 
 
+        <div class="title-field-container">
+          <div class="form-title">
+            <%= form.label :title %>
+          </div>
+          <div class="title-field">
+            <%= form.text_field :title %>
+          </div>
+        </div>
+        <div class="content-field-container">
+          <div class="form-content">
+            <%= form.label :content %>
+          </div>
+          <div class="content-field">
+            <%= form.text_area :content, :size => "67x5" %>
+          </div>
+        </div>
+        <div class="video-container">
+          <div class="form-video">
+            <%= form.label :video %>
+          </div>
+          <div class="video-field">
+            <%= form.file_field :video %>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+          <div class="actions">
+            <%= form.submit "　　　投稿　　　" %>
+          </div>
+      <% end %>
+
   </div>
-
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
-
-  <div class="field">
-    <%= form.label :video %>
-    <%= form.file_field :video %>
-  </div>
-
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

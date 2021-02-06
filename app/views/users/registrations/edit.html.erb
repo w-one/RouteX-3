@@ -1,40 +1,57 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="sign-form-container">
+  <div class="user-field-container">  
+    <%= link_to "＜戻る", :back %>
+    
+    <h2>プロフィールを編集 <% resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= render "users/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autofocus: true, autocomplete: "ユーザーネーム" %>
+      <div class="form-user">
+        <%= f.label :username %>
+      </div>
+      <div class="user-field">
+        <%= f.text_field :username, autofocus: true, autocomplete: "ユーザーネーム" %>
+      </div>
+
+      <div class="form-user">
+        <%= f.label :nickname %>
+      </div>
+      <div class="user-field">
+        <%= f.text_field :nickname, autofocus: true, autocomplete: "名前" %>
+      </div>
+
+      <div class="form-user">
+        <%= f.label :profile %>
+      </div>
+        <%= f.text_area :profile, autofocus: true, :size => "49x3"  %>
+
+
+      <div class="form-user">
+        <%= f.label :profile_image %>
+      </div>
+        <%= f.file_field :profile_image %>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+
+      <div class="update-actions">
+        <%= f.submit "　　　編集する　　　" %>
+      </div>
+    <% end %>
+    
+    <div class="logout">
+      <% if user_signed_in? %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      <% end %>
+    </div>
+    <div class="delete-account">
+      <h3>アカウントを削除</h3>
+
+      <p> <%= button_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :nickname %><br />
-    <%= f.text_field :nickname, autofocus: true, autocomplete: "名前" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :profile %><br />
-    <%= f.text_area :profile, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :profile_image %>
-    <%= f.file_field :profile_image %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>

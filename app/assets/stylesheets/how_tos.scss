@@ -12,19 +12,22 @@ body {
     Meiryo, "ＭＳ Ｐゴシック", sans-serif;
 }
 
-header {
-  
-}
 
 .header-wrapper {
+  width: 100%;
+  margin-left: auto;
+}
+
+.header-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: solid 2px #333333;
   height: 70px;
-  width: 100%;
-  margin: 0;
+  max-width: 1000px;
+  min-width: 750px;
+  margin: auto;
   background-color: #ffffff;
+  border-bottom: solid 2px #333333;
 }
 
 .header-top h1.v-top {
@@ -179,4 +182,339 @@ header a {
   transform: scale(1.4);
   color: #333333;
   background-color: #ffffff;
+}
+
+
+.v-main {
+  max-width: 900px;
+  min-width: 700px;
+  margin:0 auto;
+  margin-top: 20px;
+  margin-bottom: 150px;
+
+}
+
+.main-top {
+  
+  width: auto;
+  height: 50px;
+  justify-content: space-between;
+  display: flex;
+}
+
+.search {
+  margin-left: 30px;
+  margin-top: 10px;
+}
+
+.new {
+  margin-right: 50px;
+  margin-top: 10px;
+  --ggs: 1.5;
+}
+
+.new a {
+	display: inline-block;
+  transition: all .3s ease 0s;
+  background-color: #ffffff;
+  color: #333333;
+  text-decoration: none;
+}
+
+.new a:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.video-container {
+  
+}
+
+.video-contents {
+  background-color: rgb(230, 230, 230);
+  max-width: 850px;
+  min-width: 600px;
+  margin:10px auto 10px auto;
+}
+
+.video-contents a{
+  text-decoration: none;
+}
+
+.video-contents a:hover {
+  color: #333333;
+  background-color:  rgb(230, 230, 230);
+  text-decoration: none;
+}
+
+
+.contents-user {
+  margin: 20px auto 5px 40px;
+  padding-top: 15px;
+  display: flex;
+}
+
+.contents-user a {
+  color: #333333;
+  text-decoration: none;
+}
+
+.contents-user a:hover {
+  background-color: rgb(230, 230, 230);
+  color: #333333;
+  text-decoration: none;
+}
+
+.v-userimage img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.v-username {
+  font-size: 25px;
+  margin: 28px auto auto 7px;
+}
+
+.contents-video {
+  width: 600px;
+  margin:0 auto;
+}
+
+.contents-text {
+  margin-top: 20px ;
+  display: flex;
+  justify-content: space-between;
+}
+
+.v-contents-text {
+  margin-left: 40px;
+  margin-bottom: 20px;
+}
+
+.text-fight {
+  margin-right: 90px;
+  font-size: 30px;
+}
+
+.v-text-title {
+  font-size: 25px;
+  margin-bottom: 5px;
+}
+
+.v-text-contents {
+  margin-top: 10px;
+  margin-left: 15px;
+  font-size: 20px;
+}
+
+
+
+// show
+
+
+
+.v-show-main {
+  // background-color: antiquewhite;
+  max-width: 900px;
+  min-width: 700px;
+  margin:0 auto;
+}
+
+.v-show-main a{
+  text-decoration: none;
+}
+
+.v-show-main a:hover {
+  color: #333333;
+  background-color:  rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+.v-show-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.v-show-fight {
+  font-size: 25px;
+  margin: 20px 20px auto auto;
+}
+
+.v-show-user {
+  display: flex;
+  margin: 10px auto 10px 60px;
+}
+
+.v-show-userimage img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.v-show-username {
+  font-size: 25px;
+  margin: 28px auto auto 7px;
+}
+
+.show-video {
+  width: 700px;
+  margin:0 auto;
+}
+
+
+
+.v-show-text {
+  margin: 20px 50px auto 50px;
+  border-top: solid 1px #333333;
+  border-bottom: solid 1px #333333;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.v-show-text-title {
+  font-size: 25px;
+  font-weight: bold;
+  margin: 5px;
+}
+
+.v-show-text-content {
+  margin-left: 5px;
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.show-edit-delete {
+  margin-right: 30px;
+  margin-top: 20px;
+}
+
+
+
+.advice-wrapper {
+  margin: 30px auto 150px 40px;
+}
+
+.advice-wrapper p {
+  font-weight: bold;
+  font-size: 25px;
+  margin: 20px auto 20px 20px;
+}
+
+.advice-contents {
+  margin-left: 40px;
+}
+
+.advice-show {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.advice-right {
+  margin: 30px 150px auto auto;
+}
+
+.advice-user {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.advice-user a {
+  text-decoration: none;
+}
+
+.advice-user a:hover {
+  background-color: #ffffff;
+  color: #333333;
+  text-decoration: none;
+}
+
+.advice-userimage img {
+  width: 30px;
+  height: 30px;
+  object-fit:cover;
+  border-radius: 50%;
+}
+
+.advice-username {
+  font-size: 15px;
+  padding-left: 10px;
+  margin-top: 13px;
+}
+
+.advice-body {
+  font-size: 20px;
+}
+
+.submit-button {
+  font-size: 15px;
+}
+
+.form-container {
+  max-width: 900px;
+  min-width: 700px;
+  margin:0 auto;
+  margin-top: 40px;
+  margin-bottom: 150px;
+  padding: 20px;
+  background-color: antiquewhite;
+}
+
+.form-contents {
+  width: 80%;
+  margin:0 auto;
+
+}
+
+.title-field-container {
+  
+  width: 45%;
+  margin: 10px auto;
+}
+
+
+.title-field {
+  input[type="text"] {
+    width: 99%;
+    height: 20px;
+  }
+}
+
+.form-title {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.content-field-container {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.content-field {
+  input[type="form.text_area"] {
+    width: 99%;
+    
+  }
+}
+
+.form-content {
+  font-size: 20px;
+}
+
+.form-video {
+  font-size: 20px;
+}
+
+.video-container {
+  width: 70%;
+  margin: 10px auto;
+}
+
+.actions {
+  width: 70%;
+  margin: 15px auto;
 }

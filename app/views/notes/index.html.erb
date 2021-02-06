@@ -1,26 +1,46 @@
 <p id="notice"><%= notice %></p>
-<h3>投稿を検索</h3>
-  <%= form_tag({controller:"notes",action:"index"}, method: :get) do %>
-    <%= text_field_tag :search %>
-    <%= submit_tag '検索する'  %>
-  <% end %>
 
-  <% if user_signed_in? %>
-    <%= link_to "投稿", new_note_path %>
-  <% else %>
-    <%= link_to "投稿", new_user_session_path %>
-  <% end %>
-
-<h1>Notes</h1>
-
-<div class="notes-container">
-  <% @notes.each do |note| %>
-    <div class="note">
-      <a href="/users/<%= note.user.id %>"><%= image_tag note.user.profile_image_url, size: "30x30" if note.user.profile_image? %></a>
-      <a href="/users/<%= note.user.id %>"><%= note.user.username %></a>
-      <h3><a href="/notes/<%= note.id %>"><%= note.title %></a></h3>
-      
-      <i class="far fa-save"></i><%= note.archives.count %>
+<div class="n-main">
+  <div class="main-top">
+    <div class="search">
+      <%= form_tag({controller:"notes",action:"index"}, method: :get) do %>
+        <%= text_field_tag :search %>
+        <%= submit_tag 'search'  %>
+      <% end %>
     </div>
-  <% end %>
-</div>
+    <div class="new">
+      <% if user_signed_in? %>
+        <%= link_to new_note_path do %>
+          <i class="gg-add-r"></i>
+        <% end %>
+      <% else %>
+        <%= link_to new_user_session_path do %>
+          <i class="gg-add-r"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+      <div class="notes-container">
+        <% @notes.each do |note| %>
+          <div class="note-contents">
+            <div class="contents-user">
+              <div class="n-userimage">
+                <a href="/users/<%= note.user.id %>"><%= image_tag note.user.profile_image_url, size: "30x30" if note.user.profile_image? %></a>
+              </div>
+                <div class="n-username">
+                <a href="/users/<%= note.user.id %>"><%= note.user.username %></a>
+              </div>
+            </div>
+            <div class="contents-note">
+                <h3><a href="/notes/<%= note.id %>"><%= note.title %></a></h3>
+            </div>
+            <div class="archive">
+                <i class="far fa-save"></i><%= note.archives.count %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+
+    </div>

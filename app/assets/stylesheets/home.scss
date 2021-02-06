@@ -11,19 +11,22 @@ body {
     Meiryo, "ＭＳ Ｐゴシック", sans-serif;
 }
 
-header {
-
-}
 
 .header-wrapper {
+  width: 100%;
+  margin-left: auto;
+}
+
+.header-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: solid 2px #333333;
   height: 70px;
-  width: 100%;
-  margin: 0;
+  max-width: 1000px;
+  min-width: 750px;
+  margin: auto;
   background-color: #ffffff;
+  border-bottom: solid 2px #333333;
 }
 
 .header-top h1 {
@@ -177,4 +180,26 @@ header a {
   transform: scale(1.4);
   color: #333333;
   background-color: #ffffff;
+}
+
+.main {
+  background-color: #ffffff;
+  max-width: 900px;
+  min-width: 700px;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.main-container {
+
+}
+
+h2 {
+  font-size: 30px;
+}
+
+#map {
+  height: 600px;
+  width: 100%;
+  margin-top: 10px;
 }

@@ -1,80 +1,96 @@
 <p id="notice"><%= notice %></p>
-<%= link_to 'Back', how_tos_path %>
-<p>
-  <a href="/users/<%= @how_to.user.id %>"><%= image_tag @how_to.user.profile_image_url, size: "30x30" if @how_to.user.profile_image? %></a>
-  <a href="/users/<%= @how_to.user.id %>"><%= @how_to.user.username %></a>
-</p>
 
-<p>
-  <%= @how_to.title %>
-</p>
-
-<p>
-  <%= @how_to.content %>
-</p>
-
-<p>
-  <%= video_tag @how_to.video_url ,:controls => true ,:loop => true ,:autoplay => true if @how_to.video?%>
-</p>
-
-<p>
-  <%= image_tag @how_to.image_url, size: "250x200" if @how_to.image? %>
-</p>
-
-<% if user_signed_in? && current_user.id == @how_to.user_id %>  
-  <%= link_to 'Edit', edit_how_to_path(@how_to) %> 
-  <%= link_to "削除する", how_to_path, method: :delete %>
-<% end %>
-
-<% if user_signed_in? %>
-    <% if current_user.already_fought?(@how_to) %>
-        <%= link_to how_to_fight_path(@how_to), method: :delete do %>
-          <i class="fas fa-thumbs-up"></i><%= @how_to.fights.count %>
-        <% end %>
-    <% else %>
-        <%= link_to how_to_fights_path(@how_to), method: :post do %>
-        <i class="far fa-thumbs-up"></i><%= @how_to.fights.count %>
-        <% end %>
-    <% end %>
-<% else %>
-    <i class="far fa-fire-alt"></i><%= @how_to.fights.count %>
-<% end %>
-
-</div>
-
-<h2>いいねしたユーザー</h2>
-<% @how_to.fought_users.each do |user| %>
-  <li><%= user.username %></li>
-<% end %>
-
-<div class="advice-wrapper">
-  <p>コメント一覧</p>
-  <% @advices.each do |c| %>
-    <div>
-      <a href="/users/<%= @how_to.user.id %>"><%= image_tag c.user.profile_image_url, size: "30x30" if c.user.profile_image? %></a>
-      <a href="/users/<%= @how_to.user.id %>"><%= c.user.username unless c.user.blank? %></a>
-      <br>
-      <%= c.content %>
-      <br>
-      <% if user_signed_in? && current_user.id == c.user_id %>  
-        <%= link_to '削除', how_to_advice_path(@how_to, c), method: :delete %>
-      <% end %>
+<div class="v-show-main">
+  <div class="v-show-top">
+    <div class="v-show-user">
+      <div class="v-show-userimage">
+        <a href="/users/<%= @how_to.user.id %>"><%= image_tag @how_to.user.profile_image_url, size: "30x30" if @how_to.user.profile_image? %></a>
+      </div>
+      <div class="v-show-username">
+        <a href="/users/<%= @how_to.user.id %>"><%= @how_to.user.username %></a>
+      </div>
     </div>
-      <br>
-  <% end %>
+    <div class="v-show-fight">
+          <% if user_signed_in? %>
+              <% if current_user.already_fought?(@how_to) %>
+                  <%= link_to how_to_fight_path(@how_to), method: :delete do %>
+                    <i class="fas fa-thumbs-up"></i><%= @how_to.fights.count %>
+                  <% end %>
+              <% else %>
+                  <%= link_to how_to_fights_path(@how_to), method: :post do %>
+                  <i class="far fa-thumbs-up"></i><%= @how_to.fights.count %>
+                  <% end %>
+              <% end %>
+          <% else %>
+              <i class="far fa-fire-alt"></i><%= @how_to.fights.count %>
+          <% end %>
+    </div>
+  </div>
+  <div class="show-video">
+      <%= video_tag @how_to.video_url, size: "700x400" ,:controls => true ,:loop => true, autoplay: true , muted: true if @how_to.video?%>
+  </div>
+  <div class="v-show-text">
+    <duv class="v-show-text-left">
+      <div class="v-show-text-title">
+        <%= @how_to.title %>
+      </div>
+      <div class="v-show-text-content">
+        <%= @how_to.content %>
+      </div>
+    </duv>
+    <div class="show-edit-delete">
+          <% if user_signed_in? && current_user.id == @how_to.user_id %>  
+            <%= link_to '編集', edit_how_to_path(@how_to) %> 
+            <%= link_to "削除", how_to_path, method: :delete %>
+          <% end %>
+    </div>
+  </div>
 
+          <!-- <h2>いいねしたユーザー</h2>
+          <% @how_to.fought_users.each do |user| %>
+            <li><%= user.username %></li>
+          <% end %> -->
 
-    <%= form_with(model: [@how_to, @advice], local: true) do |f| %>
-      <%= f.text_area :content %>
-      <% if user_signed_in? %>
-        <%= button_tag type: "submit" do %>
-          <i class="far fa-comments"></i> 送信
+  <div class="advice-wrapper">
+      <p>コメント一覧</p>
+      <div class="advice-contents">
+        <% @advices.each do |c| %>
+            <div class="advice-show">
+              <div class="advice-left">
+                <div class="advice-user">
+                  <div class="advice-userimage">
+                    <a href="/users/<%= @how_to.user.id %>"><%= image_tag c.user.profile_image_url, size: "30x30" if c.user.profile_image? %></a>
+                  </div>
+                  <div class="advice-username">
+                    <a href="/users/<%= @how_to.user.id %>"><%= c.user.username unless c.user.blank? %></a>
+                  </div>
+                </div>
+                <div class="advice-body">
+                  <%= c.content %>
+                </div>
+              </div>
+              <div class="advice-right">
+                <% if user_signed_in? && current_user.id == c.user_id %>  
+                  <%= link_to '削除', how_to_advice_path(@how_to, c), method: :delete %>
+                <% end %>
+              </div>
+            </div>
         <% end %>
-      <% else %>
-        <%= link_to "送信", new_user_session_path %>
-      <% end %>
-    <% end %>
-
+            <div class="advice-form">
+              <%= form_with(model: [@how_to, @advice], local: true) do |f| %>
+                <%= f.text_area :content, size: "60x2" %>
+                <% if user_signed_in? %>
+                  <%= button_tag type: "submit" do %>
+                    <div class="submit-button">
+                      <i class="far fa-comments"></i> 送信
+                    </div>
+                  <% end %>
+                <% else %>
+                  <%= link_to "送信", new_user_session_path %>
+                <% end %>
+              <% end %>
+            </div>
+      </div>
+  </div>
 </div>
-
 

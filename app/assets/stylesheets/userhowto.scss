@@ -6,7 +6,8 @@
 }
 
 .userpage {
-  width:700px;
+  max-width:900px;
+  min-width: 700px;
   min-height:300px;
   color : #333333;
   font-family: DIN Condensed;
@@ -76,7 +77,8 @@
   margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
-  width: 680px;
+  max-width:900px;
+  min-width: 700px;
   border-top: solid 1px;
   border-bottom: solid 1px;
   

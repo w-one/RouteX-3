@@ -11,26 +11,22 @@ body {
     Meiryo, "ＭＳ Ｐゴシック", sans-serif;
 }
 
-header {
-  height: 70px;
-  width: 100%;
-  background-color: #e2e2e2;
-  margin: auto;
-}
 
 .header-wrapper {
-  position: fixed;
+  width: 100%;
+  margin-left: auto;
+}
+
+.header-content {
+  border-bottom: solid 2px #333333;
   display: flex;
   justify-content: space-between;
-  text-align: center;
-  border-bottom: solid 2px #333333;
+  align-items: center;
   height: 70px;
   max-width: 1000px;
-  min-width: 600px;
-  margin-right: auto;
-  margin-left: auto;
+  min-width: 750px;
+  margin: auto;
   background-color: #ffffff;
-  
 }
 
 .header-top h1.u-top {
@@ -184,6 +180,8 @@ header a {
 }
 
 
+
+
 .userpage a {
   text-decoration: none;
   font-family: DIN Condensed;
@@ -191,7 +189,8 @@ header a {
 }
 
 .userpage {
-  width:700px;
+  max-width:900px;
+  min-width: 700px;
   min-height:300px;
   color : #333333;
   font-family: DIN Condensed;
@@ -202,6 +201,22 @@ header a {
 .usertop-container {
   text-align: center;
   display: flex;
+}
+
+.userpage-continer {
+  width: 100%;
+  display: flex;
+  
+  justify-content: space-between;
+}
+
+.userpage-left {
+  display: flex;
+  width: 60%;
+}
+
+.userpage-right {
+  margin-right: 60px;
 }
 
 .profileimage img {
@@ -230,13 +245,13 @@ header a {
 
 .edit-follow {
   margin-top: 25px;
-  margin-left: 140px;
+  margin-right: 0;
+  
 }
 
 .edit {
   padding-top: 8px;
   font-size: 15px;
-  
 }
 
 .edit a {
@@ -261,10 +276,11 @@ header a {
   margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
-  width: 680px;
+  max-width:900px;
+  min-width: 700px;
   border-top: solid 1px;
   border-bottom: solid 1px;
-  
+  margin-bottom: 20px;
 }
 
 .select-list ul {
@@ -293,3 +309,156 @@ header a {
   transform: scale(1.4);
 }
 
+
+.s-post-container {
+  background-color: #ffffff;
+  
+}
+
+.s-post-item {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  padding: 10px;
+  
+}
+
+.s-text {
+  background-color: #ffffff;
+  width: 370px;
+  height: 200px;
+  padding-top: 20px;
+  margin-left: 30px;
+}
+
+.s-text ul {
+  background-color: rgb(255, 255, 255);
+  justify-content: space-between;
+  font-size: 20px;
+  list-style: none;
+}
+
+.s-text li {
+  padding: 10px;
+}
+
+.s-text li.text {
+  font-weight: bold;
+}
+
+.s-image-container {
+  margin-left: 50px;
+}
+
+.s-image {
+  width: 300px;
+  height: 220px;
+  background-color: #ffffff;
+}
+
+.s-image a {
+  display: inline-block;
+  transition: all .3s ease 0s;
+  text-decoration: none;
+  background-color: #ffffff;
+}
+
+.s-image a:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  text-decoration: none;
+  background-color: #ffffff;
+}
+
+.sign-form-container {
+  max-width: 800px;
+  min-width: 700px;
+  margin:0 auto;
+  margin-top: 40px;
+  margin-bottom: 150px;
+  padding: 20px;
+  background-color: rgb(255, 240, 221);
+}
+
+.user-field-container {
+  font-size: 20px;
+  width: 45%;
+  margin: 10px auto;
+}
+
+.user-field-container a {
+  text-decoration: none;
+}
+
+.user-field-container a:hover {
+  text-decoration: none;
+  color: #333333;
+  background-color:  rgb(255, 240, 221);
+}
+
+.user-field-container h2 {
+  margin: 15px;
+}
+
+.user-field {
+  input[type="text"] {
+    width: 99%;
+    height: 20px;
+  }
+
+  input[type="email"] {
+    width: 99%;
+    height: 20px;
+  }
+
+  input[type="password"] {
+    width: 99%;
+    height: 20px;
+  }
+
+
+}
+
+.form-user {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.actions {
+  display: flex;
+  width: 45%;
+  margin: 10px auto;
+  justify-content: space-between;
+}
+
+.form-login {
+  font-size: 20px;
+  margin: 5px 10px auto auto;
+}
+
+.form-login a {
+  text-decoration: none;
+}
+
+.form-login a:hover {
+  text-decoration: none;
+  background-color: rgb(255, 240, 221);
+  color: #333333;
+}
+
+.sessions-actions {
+  display: flex;
+}
+
+.update-actions {
+  margin: 10px 0;
+}
+
+.delete-account {
+  margin: 50px 0;
+}
+
+.logout {
+  margin-top: 30px;
+}

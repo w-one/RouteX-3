@@ -17,31 +17,33 @@
   <body>
     <header>
       <div class="header-wrapper">
-        <div class="header-top">
-          <h1 class="v-top"><%= link_to "Route X", root_path %></h1>
-        </div>
-        <div class="header-middle">
-          <div class="header-list">
-            <ul>
-              <li class="v-video"><%= link_to "Video", how_tos_path %></li>
-              <li class="v-spot"><%= link_to "Spot", spots_path %></li>
-              <li class="v-note"><%= link_to "Note", notes_path %></li>
-            </ul>
+        <div class="header-content">
+          <div class="header-top">
+            <h1 class="v-top"><%= link_to "Route X", root_path %></h1>
           </div>
-        </div>
-        <div class="header-end">
-          <% if user_signed_in? %>
-            <div class="v-icon">
-              <%= link_to user_path(current_user.id) do %>
-                <i class="gg-home"></i> 
-              <% end %> 
+          <div class="header-middle">
+            <div class="header-list">
+              <ul>
+                <li class="v-video"><%= link_to "Video", how_tos_path %></li>
+                <li class="v-spot"><%= link_to "Spot", spots_path %></li>
+                <li class="v-note"><%= link_to "Note", notes_path %></li>
+              </ul>
             </div>
-          <% else %>
-            <div class="v-sign">
-              <%= link_to "Sign up", new_user_registration_path %>
-              <%= link_to "Login", new_user_session_path %>
-            </div>
-          <% end %> 
+          </div>
+          <div class="header-end">
+            <% if user_signed_in? %>
+              <div class="v-icon">
+                <%= link_to user_path(current_user.id) do %>
+                  <i class="gg-home"></i> 
+                <% end %> 
+              </div>
+            <% else %>
+              <div class="v-sign">
+                <%= link_to "Sign up", new_user_registration_path %>
+                <%= link_to "Login", new_user_session_path %>
+              </div>
+            <% end %> 
+          </div>
         </div>
       </div>
     </header>

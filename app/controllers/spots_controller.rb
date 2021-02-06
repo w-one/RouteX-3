@@ -44,12 +44,11 @@ class SpotsController < ApplicationController
     redirect_to action: :index
   end
 
-  
 
   private
 
   def spot_params
-    params.require(:spot).permit(:text, :image, :lat, :lng, tag_ids: [])
+    params.require(:spot).permit(:title, :text, :image, :lat, :lng, tag_ids: [])
   end
   
 end

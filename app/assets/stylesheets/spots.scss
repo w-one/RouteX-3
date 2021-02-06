@@ -14,19 +14,21 @@ body {
     Meiryo, "ＭＳ Ｐゴシック", sans-serif;
 }
 
-header {
-  
+.header-wrapper {
+  width: 100%;
+  margin-left: auto;
 }
 
-.header-wrapper {
+.header-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: solid 2px #333333;
   height: 70px;
-  width: 100%;
-  margin: 0;
+  max-width: 1000px;
+  min-width: 750px;
+  margin: auto;
   background-color: #ffffff;
+  border-bottom: solid 2px #333333;
 }
 
 .header-top h1.s-top {
@@ -177,73 +179,567 @@ header a {
 }
 
 
+.main {
+  margin-top: 20px;
+  max-width: 900px;
+  min-width: 700px;
+  margin-bottom: 150px;
+}
+
+.main-top {
+  background-color: rgb(255, 255, 255);
+  width: auto;
+  height: 50px;
+  justify-content: space-between;
+  display: flex;
+}
+
+.search {
+  margin-left: 30px;
+  margin-top: 10px;
+}
+
+.new {
+  margin-right: 50px;
+  margin-top: 10px;
+  --ggs: 1.5;
+}
 
 
+
+.new a {
+	display: inline-block;
+  transition: all .3s ease 0s;
+  background-color: #ffffff;
+  color: #333333;
+  text-decoration: none;
+}
+
+.new a:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  background-color: #ffffff;
+  color: #333333;
+}
+
+
+
+.spots-container {
+  background-color: #ffffff;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.spots-item {
+  background-color: #ffffff;
+  width: 49%;
+  float: left;
+  margin: 10px 0 20px 1%;
+  padding: 0;
+  position: relative;
+}
+
+.spot-box {
+  background-color: rgb(255, 255, 255);
+  display: block;
+}
+
+.spot-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.spot-text {
+  background-color: #ffffff;
+  display: block;
+  margin-top: 23px;
+  margin-left: 18px;
+}
+
+.spot-text-list {
+  padding-left: 5px;
+  margin-top: 5px;
+}
+
+.text-title {
+  font-weight: bold;
+  font-size: 20px;
+  color: #333333;
+}
+
+.text-content {
+  font-size: 15px;
+  color: #949494;
+  padding-top: 5px;
+}
+
+.user-container {
+  display: flex;
+}
+
+.user-container a {
+  text-decoration: none;
+}
+
+.user-container a:hover {
+  background-color: #ffffff;
+  color: #333333;
+  text-decoration: none;
+}
+
+.userimage img {
+  border-radius: 50%;
+}
+
+.username {
+  margin-top: 14px;
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+.spot-image {
+  width: 100%;
+  height: 300px;
+  margin-left: 21px;
+}
+
+.spot-image a {
+  display: inline-block;
+  transition: all .3s ease 0s;
+  text-decoration: none;
+  
+}
+
+.spot-image a:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  text-decoration: none;
+  background-color: #ffffff;
+}
+
+.spot-like {
+  font-size: 30px;
+  padding-top: 20px;
+  padding-right: 30px;
+  
+}
+
+.spot-like a {
+  text-decoration: none;
+}
+
+.spot-like a:hover {
+  text-decoration: none;
+  background-color: #ffffff;
+  color: #333333;
+}
+
+
+// showページ
+
+.spot-show {
+  background-color: rgb(255, 255, 255);
+  max-width: 900px;
+  min-width: 700px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.spot-show-contents {
+  display: flex;
+  flex-direction: column;
+}
+
+.show-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.show-top-right {
+  margin-right: 60px;
+  margin-top: 20px;
+  font-size: 30px;
+}
+
+.show-top-right a {
+  text-decoration: none;
+}
+
+.show-top-right a:hover {
+  text-decoration: none;
+  background-color: #ffffff;
+  color: #333333;
+}
+
+
+.show-text {
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.show-user {
+  display: flex;
+}
+
+.show-user a {
+  text-decoration: none;
+}
+
+.show-user a:hover {
+  background-color: #ffffff;
+  color: #333333;
+  text-decoration: none;
+}
+
+.show-userimage img {
+  width: 33px;
+  height: 33px;
+  object-fit:cover;
+  border-radius: 50%;
+}
+
+.show-username {
+  font-size: 20px;
+  padding-left: 10px;
+  margin-top: 13px;
+}
+
+.show-title {
+  margin-top: 10px;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.to-rate {
+  margin-bottom: 20px;
+
+}
+
+nav a {
+  font-size: 20px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.show-image {
+  margin:0 auto;
+  max-width: 670px;
+  min-width: 500px;
+}
+
+.show-details {
+  
+  border-top: solid 1px #333333;
+  border-bottom: solid 1px #333333;
+  margin-top: 10px;
+}
+
+.show-details-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.show-details h3 {
+  font-size: 26px;
+  padding-top: 20px;
+}
+
+.show-details-right {
+  margin: 30px 60px auto auto;
+  font-weight: bolder;
+}
+
+.show-details-right a {
+  display: inline-block;
+  border-top: solid 1px #333333;
+  border-bottom: solid 1px #333333;
+  transition: all .3s ease 0s;
+  text-decoration: none;
+  padding: 10px 5px 6px 5px;
+}
+
+.show-details-right a:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  background-color: #ffffff;
+  color: #333333;
+  padding: 10px 5px 6px 5px;
+}
+
+.details-text {
+  margin:0 auto ;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  margin-left: 40px;
+}
+
+.details-tag {
+  margin-left: 20px;
+}
+
+.details-tag h2 {
+  font-size: 20px;
+}
+
+.details-tag-content {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tag-name {
+  margin-top: 10px;
+  margin-left: 20px;
+  border: solid 1px #333333;
+  padding: 8px 9px 4px 9px;
+  border-radius: 20px;
+  font-weight: bolder;
+}
+
+#map {
+  height: 400px;
+  width: 90%;
+  margin: 30px auto 30px auto;
+}
+
+
+
+// 星評価
 
 
 .lecture_form{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    width: 300px;
-    margin: 30px;
-  }
-  .name_field{
-    width: 200px;
-    margin-bottom: 30px;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 300px;
+  margin: 30px;
+}
+.name_field{
+  width: 200px;
+  margin-bottom: 30px;
+}
 
 /*　以下新規投稿ページの星用のCSS　*/
 
-  .post_form{
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: flex-end;
-  }
-  .post_form input[type='radio']{
-    display: none;
-  }
-  .post_form label{
-    position: relative;
-    padding: 10px 10px 0;
-    color: gray;
-    cursor: pointer;
-    font-size: 30px; /*星の大きさを変更するときはここ*/
-  }
-  .post_form label .text{
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    text-align: center;
-    font-size: 9px; /*星の上の説明書きの大きさを変更するときはここ*/
-    color: gray;
-  }
-  .post_form label:hover,
-  .post_form label:hover ~ label,
-  .post_form input[type='radio']:checked ~ label{
-    color: #ffcc00;
-  }
+.post_form{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+.post_form input[type='radio']{
+  display: none;
+}
+.post_form label{
+  position: relative;
+  padding: 10px 5px 0;
+  color: gray;
+  cursor: pointer;
+  font-size: 25px; /*星の大きさを変更するときはここ*/
+}
+// .post_form label .text{
+//   position: absolute;
+//   left: 0;
+//   top: 0;
+//   right: 0;
+//   text-align: center;
+//   font-size: 8px; /*星の上の説明書きの大きさを変更するときはここ*/
+//   color: gray;
+// }
+.post_form label:hover,
+.post_form label:hover ~ label,
+.post_form input[type='radio']:checked ~ label{
+  color: #ffcc00;
+}
 
 
 /*　以下一覧ページの星用のCSS　*/
 
-  .star-rating {
-    position: relative;
-    display: inline-block;
-    width: 5em;
-    height: 1em;
-    font-size: 25px;
+.star-rating {
+  position: relative;
+  display: inline-block;
+  width: 5em;
+  height: 1em;
+  font-size: 25px;
+}
+.star-rating-front {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  color: #ffcc33;
+}
+.star-rating-back {
+  display: inline-block;
+  color: #ccc;
+}
+
+.comment-wrapper {
+  margin-top: 40px;
+  margin-bottom: 150px;
+}
+
+.comment-wrapper p {
+  font-weight: bold;
+  font-size: 25px;
+  margin: 20px auto 20px 20px;
+}
+
+.comment-contents {
+  margin-left: 40px;
+}
+
+.comment-show {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.comment-right {
+  margin: 30px 100px auto auto;
+}
+
+.comment-user {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.comment-user a {
+  text-decoration: none;
+}
+
+.comment-user a:hover {
+  background-color: #ffffff;
+  color: #333333;
+  text-decoration: none;
+}
+
+.comment-userimage img {
+  width: 28px;
+  height: 28px;
+  object-fit:cover;
+  border-radius: 50%;
+}
+
+.comment-username {
+  font-size: 15px;
+  padding-left: 10px;
+  margin-top: 13px;
+}
+
+
+
+.form-container {
+  max-width: 800px;
+  min-width: 700px;
+  margin:0 auto;
+  margin-top: 40px;
+  margin-bottom: 150px;
+  padding: 20px;
+  background-color: rgb(255, 240, 221);
+}
+
+.form-contents {
+  width: 80%;
+  margin:0 auto;
+
+}
+
+.title-field-container {
+  
+  width: 45%;
+  margin: 10px auto;
+}
+
+
+.title-field {
+  input[type="text"] {
+    width: 99%;
+    height: 20px;
   }
-  .star-rating-front {
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    color: #ffcc33;
+}
+
+.form-title {
+  font-size: 25px;
+  margin-top: 10px;
+}
+
+.content-field-container {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.content-field {
+  input[type="form.text_area"] {
+    width: 99%;
+    
   }
-  .star-rating-back {
-    display: inline-block;
-    color: #ccc;
-  }
+}
+
+.form-content {
+  font-size: 25px;
+}
+
+.form-video {
+  font-size: 25px;
+}
+
+.video-container {
+  width: 70%;
+  margin: 10px auto;
+}
+
+.actions {
+  width: 70%;
+  margin: 15px auto;
+}
+
+
+
+.form-tag-group {
+  margin: 30px 0;
+}
+
+.tag-list {
+
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.form-check {
+  
+  margin: 10px;
+  
+  font-size: large;
+}
+
+.form-tag-name {
+  font-size: 25px;
+  margin-bottom: 15px;
+}
+
+.form-map h3 {
+  font-size: 25px;
+}
+
+.backform {
+  margin: 10px auto auto 20px;
+  font-size: large;
+}
+
+.backform a {
+  text-decoration: none;
+}
+
+.backform a:hover {
+  text-decoration: none;
+  color: #333333;
+  background-color:  rgb(255, 240, 221);
+}

@@ -1,107 +1,133 @@
-<%= form_with(model: @spot, local: true) do |f| %>
-  <div class="field">
-    <%= f.label :text %>
-    <%= f.text_field :text, :size => 140 %>
+<div class="form-container">
+  <div class="backform">
+    <%= link_to "＜戻る", spot_path %>
   </div>
-
-  <div class="field">
-    <%= f.label :image %>
-    <%= f.file_field :image %>
-  </div>
-
-  <div class='form-group'>
-    <%= f.label :セクション・アイテム %><br>
-    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-        <div class='form-check'>
-          <%= tag.label class: 'form-check-label' do %>
-            <%= tag.check_box class: 'form-check-input' %>
-            <%= tag.text %>
-          <% end %>
+  <div class="form-contents">
+    <%= form_with(model: @spot, local: true) do |f| %>
+      <div class="title-field-container">
+        <div class="form-title">
+          <%= f.label :title %>
         </div>
-    <% end %>
-  </div>
+        <div class="title-field">
+          <%= f.text_field :title, :size => 140 %>
+        </div>
+      </div>
+      <div class="content-field-container">
+        <div class="form-content">
+          <%= f.label :text %>
+        </div>
+        <div class="content-field">
+            <%= f.text_area :text, :size => "67x5" %>
+        </div>
+      </div>
+      <div class="video-container">
+          <div class="form-video">
+            <%= f.label :image %>
+          </div>
+            <%= f.file_field :image %>
+      </div>
 
-  <div class='form-group'>
-    <%= f.label :lat,"緯度" %>
-    <%= f.text_field :lat,:value =>"緯度", id: :lat %>
-    <%= f.label :lng,"経度" %>
-    <%= f.text_field :lng,:value =>"経度", id: :lng %>
-  </div>
+          <div class='form-tag-group'>
+            <div class="form-tag-name">
+              <%= f.label :Section・Item %>
+            </div>
+            <div class="tag-list">
+              <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+                  <div class='form-check'>
+                    <%= tag.label class: 'form-check-label' do %>
+                        <%= tag.check_box class: 'form-check-input' %>
+                        <%= tag.text %>
+                    <% end %>
+                  </div>
+              <% end %>
+            </div>
+          </div>
 
-  <%= f.submit "編集する" %>
-<% end %>
+          <!-- <div class='form-group'>
+            <%= f.label :lat,"緯度" %>
+            <%= f.text_field :lat,:value =>"緯度", id: :lat %>
+            <%= f.label :lng,"経度" %>
+            <%= f.text_field :lng,:value =>"経度", id: :lng %>
+          </div> -->
+
+          
 
 
 
-
-<h2>Map</h2>
-  
-  <input id="address" type="textbox" value="スポット付近を検索">
-  <input type="button" value="検索" onclick="codeAddress()">
-  <p>マーカーをドラック＆ドロップで位置の調整ができます。<p>
-  <div id='map'></div>
-  
-  <style>
-  #map {
-    height: 600px;
-    width: 600px;
-  }
-  </style>
-  
-  <script>
-  //初期マップの設定
-  let map
-  let marker
-  function initMap(){
-    geocoder = new google.maps.Geocoder()
-  
-    map = new google.maps.Map(document.getElementById('map'), {
-      center:  {lat: 38.3904768, lng:137.8992582},   //東京
-      zoom: 10,
-  
-    });
-  }
-  
-  //検索後のマップ作成
-  let geocoder
-  let aft
-  function codeAddress(){
-    let inputAddress = document.getElementById('address').value;
-    geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-      if (status == 'OK') {
-          //マーカーが複数できないようにする
-          if (aft == true){
-              marker.setMap(null);
+      <div class="form-map">
+        <h3>Map</h3>
+          
+          <input id="address" type="textbox" value="スポット付近">
+          <input type="button" value="検索" onclick="codeAddress()">
+          <p>マーカーをドラック＆ドロップで位置の調整ができます。<p>
+          <div id='map'></div>
+          
+          <style>
+          #map {
+            height: 300px;
+            width: 600px;
           }
-  
-          //新しくマーカーを作成する
-          map.setCenter(results[0].geometry.location);
-              marker = new google.maps.Marker({
-              map: map,
-              position: results[0].geometry.location,
-              draggable: true // ドラッグ可能にする
-          });
-  
-          //二度目以降か判断
-          aft = true
-  
-          //検索した時に緯度経度を入力する
-          document.getElementById('lat').value = results[0].geometry.location.lat();
-          document.getElementById('lng').value = results[0].geometry.location.lng();
-  
-          // マーカーのドロップ（ドラッグ終了）時のイベント
-          google.maps.event.addListener( marker, 'dragend', function(ev){
-              // イベントの引数evの、プロパティ.latLngが緯度経度
-              document.getElementById('lat').value = ev.latLng.lat();
-              document.getElementById('lng').value = ev.latLng.lng();
-          });
-      } else {
-        alert('該当する結果がありませんでした：' + status);
-      }
-    });   
-  }
-  
-  </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
-  
-<%= link_to "戻る", spots_path %>
+          </style>
+          
+          <script>
+          //初期マップの設定
+          let map
+          let marker
+          function initMap(){
+            geocoder = new google.maps.Geocoder()
+          
+            map = new google.maps.Map(document.getElementById('map'), {
+              center:  {lat: 36.3904768, lng:137.8992582}, 
+              zoom: 6.5,
+          
+            });
+          }
+          
+          //検索後のマップ作成
+          let geocoder
+          let aft
+          function codeAddress(){
+            let inputAddress = document.getElementById('address').value;
+            geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+              if (status == 'OK') {
+                  //マーカーが複数できないようにする
+                  if (aft == true){
+                      marker.setMap(null);
+                  }
+          
+                  //新しくマーカーを作成する
+                  map.setCenter(results[0].geometry.location);
+                      marker = new google.maps.Marker({
+                      map: map,
+                      position: results[0].geometry.location,
+                      draggable: true // ドラッグ可能にする
+                  });
+          
+                  //二度目以降か判断
+                  aft = true
+          
+                  //検索した時に緯度経度を入力する
+                  // document.getElementById('lat').value = results[0].geometry.location.lat();
+                  // document.getElementById('lng').value = results[0].geometry.location.lng();
+          
+                  // マーカーのドロップ（ドラッグ終了）時のイベント
+                  google.maps.event.addListener( marker, 'dragend', function(ev){
+                      // イベントの引数evの、プロパティ.latLngが緯度経度
+                      document.getElementById('lat').value = ev.latLng.lat();
+                      document.getElementById('lng').value = ev.latLng.lng();
+                  });
+              } else {
+                alert('該当する結果がありませんでした：' + status);
+              }
+            });   
+          }
+          
+          </script>
+          <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+    </div>
+        
+      <%= f.submit "　　　投稿　　　" %>
+    <% end %>    
+  </div>
+</div>
+

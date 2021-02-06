@@ -3,11 +3,11 @@ class NotesController < ApplicationController
 
   def index
     if params[:search] == nil
-      @notes= Note.all
+      @notes= Note.all.page(params[:page]).per(20)
     elsif params[:search] == ''
-      @notes= Note.all
+      @notes= Note.all.page(params[:page]).per(20)
     else
-      @notes = Note.where("title LIKE ? ",'%' + params[:search] + '%')
+      @notes = Note.where("title LIKE ? ",'%' + params[:search] + '%').page(params[:page]).per(20)
     end
   end
 

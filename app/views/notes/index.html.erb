@@ -39,8 +39,10 @@
                 <i class="far fa-save"></i><%= note.archives.count %>
             </div>
           </div>
+          <!-- <%= link_to "削除する", note_path(note.id), method: :delete %> -->
         <% end %>
       </div>
+    <%= paginate @notes %>
 
 
-    </div>
+</div>

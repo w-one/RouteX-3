@@ -1,3 +1,4 @@
+
 <div class="main">
   <div class="main-top">
     <div class="search">
@@ -77,5 +78,6 @@
           <!-- <%= link_to "削除する", spot_path(t.id), method: :delete %> -->
         <% end %>      
       </div>
-
+    
+    <%= paginate @spots %>
 </div>

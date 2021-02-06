@@ -2,7 +2,7 @@ class SpotsController < ApplicationController
   layout 'spot'
 
   def index
-    @spots = params[:tag_id].present? ? Tag.find(params[:tag_id]).spots : Spot.all
+    @spots = params[:tag_id].present? ? Tag.find(params[:tag_id]).spots : Spot.all.page(params[:page]).per(6)
   end
 
   def new

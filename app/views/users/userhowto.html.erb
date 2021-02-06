@@ -35,12 +35,17 @@
     </ul>
   </div>
   
-  <% @user.how_tos.each do |t| %>
-    <a href="/how_tos/<%= t.id %>"><%= t.title %></a>
-    
-    <a href="/how_tos/<%= t.id %>"><%= video_tag t.video_url, size: "370x220" ,:controls => true ,:loop => true, muted: true if t.video?%></a>
-    <a href="/how_tos/<%= t.id %>"><%= image_tag t.image_url, size: "250x200" if t.image? %></a>
-  <% end %>
-
+  <div class="v-content-container">
+    <% @user.how_tos.each do |t| %>
+    <div class="v-contents">
+      <div class="v-content-video">
+        <a href="/how_tos/<%= t.id %>"><%= video_tag t.video_url, size: "370x210" ,:controls => true ,:loop => true, muted: true if t.video?%></a>
+      </div>
+      <div class="v-content-text">
+        <a href="/how_tos/<%= t.id %>"><%= t.title %></a>
+      </div>
+    </div>
+    <% end %>
+  </div>
   
 </div>

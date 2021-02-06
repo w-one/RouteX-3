@@ -347,6 +347,20 @@ header a {
   font-weight: bold;
 }
 
+.s-text li.tag {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.mypage-tag-name {
+  margin: 5px;
+  border: solid 1px #333333;
+  padding: 8px 9px 4px 9px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
 .s-image-container {
   margin-left: 50px;
 }

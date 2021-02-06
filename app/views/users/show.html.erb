@@ -45,9 +45,11 @@
               <ul>
                 <li class="text"><%= t.title %></li>
                 <li><i class="far fa-heart"></i><%= t.likes.count %></li>
-                <li>
+                <li class="tag">
                   <% t.tags.each do |tag| %>
-                    <%= tag.name %>
+                    <div class="mypage-tag-name">
+                      <%= tag.name %>
+                    </div>
                   <% end %>
                 </li>
               </ul>

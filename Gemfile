@@ -69,3 +69,5 @@ gem 'geocoder'
 gem 'gmaps4rails'
 
 gem 'active_hash'
+
+gem 'kaminari'

@@ -44,7 +44,7 @@
     
     <div class="logout">
       <% if user_signed_in? %>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
       <% end %>
     </div>
     <div class="delete-account">

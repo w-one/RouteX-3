@@ -27,6 +27,15 @@
             <%= f.label :image %>
           </div>
             <%= f.file_field :image %>
+            <div class="form-video">
+              <%= f.label :image2 %>
+            </div>
+            <%= f.file_field :image2 %>
+            <div class="form-video">
+              <%= f.label :image3 %>
+            </div>
+            <%= f.file_field :image3 %>
+            
       </div>
 
           <div class='form-tag-group'>
@@ -61,7 +70,7 @@
           
           <input id="address" type="textbox" value="スポット付近">
           <input type="button" value="検索" onclick="codeAddress()">
-          <p>マーカーをドラック＆ドロップで位置の調整ができます。<p>
+          <h4>マーカーをドラック＆ドロップで位置の調整ができます。</h4>
           <div id='map'></div>
           
           <style>
@@ -129,6 +138,6 @@
     </div>
         
       <%= f.submit "　　　投稿　　　" %>
-    <% end %>    
+    <% end %>
   </div>
 </div>

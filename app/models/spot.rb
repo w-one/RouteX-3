@@ -2,6 +2,8 @@ class Spot < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
   
   mount_uploader :image, ImageUploader
+  mount_uploader :image2, ImageUploader
+  mount_uploader :image3, ImageUploader
 
   belongs_to :user
 

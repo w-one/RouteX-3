@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_02_021410) do
+ActiveRecord::Schema.define(version: 2021_02_07_123059) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -171,6 +171,14 @@ ActiveRecord::Schema.define(version: 2021_02_02_021410) do
     t.index ["user_id"], name: "index_relationships_on_user_id"
   end
 
+  create_table "spot_images", force: :cascade do |t|
+    t.integer "spot_id"
+    t.string "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["spot_id"], name: "index_spot_images_on_spot_id"
+  end
+
   create_table "spots", force: :cascade do |t|
     t.integer "user_id"
     t.text "text"
@@ -183,6 +191,8 @@ ActiveRecord::Schema.define(version: 2021_02_02_021410) do
     t.float "lat"
     t.float "lng"
     t.string "title"
+    t.string "image2"
+    t.string "image3"
   end
 
   create_table "tags", force: :cascade do |t|

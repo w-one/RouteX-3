@@ -39,7 +39,18 @@
             </div>
           </div>
           <div class="show-image">
-            <%= image_tag @spot.image_url, size: "100%x450px" if @spot.image? %>
+              <!-- Swiper -->
+            <div class="swiper-container">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide"><%= image_tag @spot.image_url, size: "100%x450px" if @spot.image? %></div>
+                <div class="swiper-slide"><%= image_tag @spot.image2_url, size: "100%x450px" if @spot.image2? %></div>
+                <div class="swiper-slide"><%= image_tag @spot.image3_url, size: "100%x450px" if @spot.image3? %></div>
+              </div>
+              <!-- Add Arrows -->
+              <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"></div>
+            </div>
+            
           </div>
           <div class="show-details">
             <div class="show-details-top">

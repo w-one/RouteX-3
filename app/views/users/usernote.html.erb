@@ -3,7 +3,11 @@
     <div class="userpage-continer">
       <div class="userpage-left">
         <div class="profileimage">
-          <%= image_tag @user.profile_image_url, size: "90x90" if @user.profile_image? %>
+          <% if @user.profile_image.present? %>
+            <%= image_tag @user.profile_image_url, size: "90x90" %>
+          <% else %>
+            <%= image_tag 'usericon.jpg' , size: "90x90" %>
+          <% end %>
         </div>
         <div class="information">
           <h1><%= @user.nickname %></h1>

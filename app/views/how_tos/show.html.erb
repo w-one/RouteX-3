@@ -4,7 +4,11 @@
   <div class="v-show-top">
     <div class="v-show-user">
       <div class="v-show-userimage">
-        <a href="/users/<%= @how_to.user.id %>"><%= image_tag @how_to.user.profile_image_url, size: "30x30" if @how_to.user.profile_image? %></a>
+          <% if @how_to.user.profile_image.present? %>
+            <a href="/users/<%= @how_to.user.id %>"><%= image_tag @how_to.user.profile_image_url, size: "30x30" %></a>
+          <% else %>
+            <%= image_tag 'usericon.jpg' , size: "30x30" %>
+          <% end %>
       </div>
       <div class="v-show-username">
         <a href="/users/<%= @how_to.user.id %>"><%= @how_to.user.username %></a>
@@ -59,7 +63,11 @@
               <div class="advice-left">
                 <div class="advice-user">
                   <div class="advice-userimage">
-                    <a href="/users/<%= @how_to.user.id %>"><%= image_tag c.user.profile_image_url, size: "30x30" if c.user.profile_image? %></a>
+                    <% if c.user.profile_image.present? %>
+                      <a href="/users/<%= @how_to.user.id %>"><%= image_tag c.user.profile_image_url, size: "30x30" %></a>
+                    <% else %>
+                      <a href="/users/<%= @how_to.user.id %>"><%= image_tag 'usericon.jpg' , size: "30x30" %></a>
+                    <% end %>
                   </div>
                   <div class="advice-username">
                     <a href="/users/<%= @how_to.user.id %>"><%= c.user.username unless c.user.blank? %></a>

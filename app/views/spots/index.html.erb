@@ -38,7 +38,11 @@
                 <div class="spot-text">
                   <div class="user-container">
                     <div class="userimage">
-                      <a href="/users/<%= t.user.id %>"><%= image_tag t.user.profile_image_url, size: "33x33" if t.user.profile_image? %></a>
+                      <% if t.user.profile_image.present? %>
+                        <a href="/users/<%= t.user.id %>"><%= image_tag t.user.profile_image_url, size: "30x30" %></a>
+                      <% else %>
+                        <a href="/users/<%= t.user.id %>"><%= image_tag 'usericon.jpg' , size: "30x30" %></a>
+                      <% end %>
                     </div>
                     <div class="username">
                       <a href="/users/<%= t.user.id %>"><%= t.user.username %></a>

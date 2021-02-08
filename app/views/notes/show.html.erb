@@ -4,7 +4,11 @@
   <div class="main-top">
     <div class="n-show-user">
       <div class="n-show-userimage">
-        <a href="/users/<%= @note.user.id %>"><%= image_tag @note.user.profile_image_url, size: "30x30" if @note.user.profile_image? %></a>
+        <% if note.user.profile_image.present? %>
+          <a href="/users/<%= @note.user.id %>"><%= image_tag @note.user.profile_image_url, size: "30x30" %></a>
+        <% else %>
+          <a href="/users/<%= @note.user.id %>"><%= image_tag 'usericon.jpg' , size: "30x30" %></a>
+        <% end %>
       </div>
       <div class="show-username">
         <a href="/users/<%= @note.user.id %>"><%= @note.user.username %></a>

@@ -70,7 +70,13 @@
               <div class="home-video-contents">
                 <div class="home-video-top">
                   <div class="home-contents-user">
-                    <div class="home-v-userimage"><a href="/users/<%= t.user.id %>"><%= image_tag t.user.profile_image_url, size: "30x30" if t.user.profile_image? %></a></div>
+                    <div class="home-v-userimage">
+                      <% if t.user.profile_image.present? %>
+                        <a href="/users/<%= t.user.id %>"><%= image_tag t.user.profile_image_url, size: "30x30" %></a>
+                      <% else %>
+                        <a href="/users/<%= t.user.id %>"><%= image_tag 'usericon.jpg' , size: "30x30" %></a>
+                      <% end %>
+                    </div>
                     <div class="home-v-username"><a href="/users/<%= t.user.id %>"><%= t.user.username %></a></div>
                   </div>
                   <div class="home-text-like">
@@ -122,7 +128,13 @@
               <div class="home-video-contents">
                 <div class="home-video-top">
                   <div class="home-contents-user">
-                    <div class="home-v-userimage"><a href="/users/<%= how_to.user.id %>"><%= image_tag how_to.user.profile_image_url, size: "30x30" if how_to.user.profile_image? %></a></div>
+                    <div class="home-v-userimage">
+                      <% if how_to.user.profile_image.present? %>
+                        <a href="/users/<%= how_to.user.id %>"><%= image_tag how_to.user.profile_image_url, size: "30x30" %></a>
+                      <% else %>
+                        <a href="/users/<%= how_to.user.id %>"><%= image_tag 'usericon.jpg' , size: "30x30" %></a>
+                      <% end %>
+                    </div>
                     <div class="home-v-username"><a href="/users/<%= how_to.user.id %>"><%= how_to.user.username %></a></div>
                   </div>
                   <div class="home-text-fight">
@@ -161,7 +173,13 @@
         <% @notes.each do |note| %>
           <div class="home-note-contents">
             <div class="home-contents-user">
-              <div class="home-v-userimage"><a href="/users/<%= note.user.id %>"><%= image_tag note.user.profile_image_url, size: "30x30" if note.user.profile_image? %></a></div>
+              <div class="home-v-userimage">
+                <% if note.user.profile_image.present? %>
+                  <a href="/users/<%= note.user.id %>"><%= image_tag note.user.profile_image_url, size: "30x30" %></a>
+                <% else %>
+                  <a href="/users/<%= note.user.id %>"><%= image_tag 'usericon.jpg' , size: "30x30" %></a>
+                <% end %>
+              </div>
               <div class="home-v-username"><a href="/users/<%= note.user.id %>"><%= note.user.username %></a></div>
             </div>
             <div class="home-contents-note">

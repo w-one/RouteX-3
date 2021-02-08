@@ -15,6 +15,8 @@ class UsersController < ApplicationController
     end
   end
 
+
+
   def userhowto
     @user = User.find(params[:id]) 
   end

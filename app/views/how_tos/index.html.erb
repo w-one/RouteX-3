@@ -24,7 +24,13 @@
         <% @how_tos.each do |how_to| %>
           <div class="video-contents">
             <div class="contents-user">
-              <div class="v-userimage"><a href="/users/<%= how_to.user.id %>"><%= image_tag how_to.user.profile_image_url, size: "30x30" if how_to.user.profile_image? %></a></div>
+              <div class="v-userimage">
+                  <% if how_to.user.profile_image.present? %>
+                    <a href="/users/<%= how_to.user.id %>"><%= image_tag how_to.user.profile_image_url, size: "30x30" %></a>
+                  <% else %>
+                    <a href="/users/<%= how_to.user.id %>"><%= image_tag 'usericon.jpg' , size: "30x30" %></a>
+                  <% end %>
+              </div>
               <div class="v-username"><a href="/users/<%= how_to.user.id %>"><%= how_to.user.username %></a></div>
             </div>
             <div class="contents-video">

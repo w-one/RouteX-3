@@ -6,7 +6,11 @@
               <div class="show-text">
                 <div class="show-user">
                   <div class="show-userimage">
-                    <a href="/users/<%= @spot.user.id %>"><%= image_tag @spot.user.profile_image_url, size: "30x30" if @spot.user.profile_image? %></a>
+                    <% if @spot.user.profile_image.present? %>
+                      <a href="/users/<%= @spot.user.id %>"><%= image_tag @spot.user.profile_image_url, size: "30x30" %></a>
+                    <% else %>
+                      <a href="/users/<%= @spot.user.id %>"><%= image_tag 'usericon.jpg' , size: "30x30" %></a>
+                    <% end %>
                   </div>
                   <div class="show-username">
                     <a href="/users/<%= @spot.user.id %>"><%= @spot.user.username %></a>
@@ -42,9 +46,28 @@
               <!-- Swiper -->
             <div class="swiper-container">
               <div class="swiper-wrapper">
-                <div class="swiper-slide"><%= image_tag @spot.image_url, size: "100%x450px" if @spot.image? %></div>
-                <div class="swiper-slide"><%= image_tag @spot.image2_url, size: "100%x450px" if @spot.image2? %></div>
-                <div class="swiper-slide"><%= image_tag @spot.image3_url, size: "100%x450px" if @spot.image3? %></div>
+                <div class="swiper-slide">
+                  <% if @spot.image.present? %>
+                    <%= image_tag @spot.image_url, size: "100%x450px" %>
+                  <% else %>
+                    <%= image_tag 'Photo.jpg' %>
+                  <% end %>
+                </div>
+                <div class="swiper-slide">
+                  <% if @spot.image2.present? %>
+                    <%= image_tag @spot.image2_url, size: "100%x450px" %>
+                  <% else %>
+                    <%= image_tag 'Photo.jpg' %>
+                  <% end %>
+                </div>
+                <div class="swiper-slide">
+                  <% if @spot.image3.present? %>
+                    <%= image_tag @spot.image3_url, size: "100%x450px" %>
+                  <% else %>
+                    <%= image_tag 'Photo.jpg' %>
+                  <% end %>
+                </div>
+                
               </div>
               <!-- Add Arrows -->
               <div class="swiper-button-next"></div>

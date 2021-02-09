@@ -31,51 +31,61 @@
             <div class="spot-box">
                 <div class="spot-image-container">
                   <div class="spot-image">
-                    <a href="/spots/<%= t.id %>"><%= image_tag t.image_url, size: "90%x300" if t.image? %></a>
+                    <a href="/spots/<%= t.id %>">
+                      <% if t.image.present? %>
+                        <%= image_tag t.image_url, size: "90%x300" %>
+                      <% else %>
+                        <%= image_tag 'Photo.jpg', size: "90%x250" %>
+                      <% end %>
+                    </a>
                   </div>
                 </div>
               <div class="spot-details">
                 <div class="spot-text">
-                  <div class="user-container">
-                    <div class="userimage">
-                      <% if t.user.profile_image.present? %>
-                        <a href="/users/<%= t.user.id %>"><%= image_tag t.user.profile_image_url, size: "30x30" %></a>
-                      <% else %>
-                        <a href="/users/<%= t.user.id %>"><%= image_tag 'usericon.jpg' , size: "30x30" %></a>
-                      <% end %>
+                  <div class="spot-text-top">
+                    <div class="user-container">
+                      <div class="userimage">
+                        <% if t.user.profile_image.present? %>
+                          <a href="/users/<%= t.user.id %>"><%= image_tag t.user.profile_image_url, size: "30x30" %></a>
+                        <% else %>
+                          <a href="/users/<%= t.user.id %>"><%= image_tag 'usericon.jpg' , size: "30x30" %></a>
+                        <% end %>
+                      </div>
+                      <div class="username">
+                        <a href="/users/<%= t.user.id %>"><%= t.user.username %></a>
+                      </div>
                     </div>
-                    <div class="username">
-                      <a href="/users/<%= t.user.id %>"><%= t.user.username %></a>
+                    
+                    <div class="spot-like">
+                        <% if user_signed_in? %>
+                          <% if current_user.already_liked?(t) %>
+                            <%= link_to spot_like_path(id: t.id, spot_id: t.id), method: :delete do %>
+                              <i class="fas fa-heart"></i><%= t.likes.count %>
+                            <% end %>
+                          <% else %>
+                            <%= link_to spot_likes_path(id: t.id, spot_id: t.id), method: :post do %>
+                              <i class="far fa-heart"></i><%= t.likes.count %>
+                            <% end %>
+                          <% end %>
+                        <% else %>
+                          <%= link_to new_user_session_path do %>
+                            <%= link_to new_user_session_path do %>
+                              <i class="far fa-heart"></i><%= t.likes.count %>
+                            <% end %>
+                          <% end %>
+                        <% end %>
                     </div>
-                  </div>
+                  </div>  
                   <div class="spot-text-list">
                     <div class="text-title">
-                      <%= t.title %>
+                      <a href="/spots/<%= t.id %>"><%= t.title %></a>
                     </div>
                     <div class="text-content">
-                      <%= t.text %>
+                      <a href="/spots/<%= t.id %>"><%= t.text %></a>
                     </div>
                   </div>  
                 </div>
-                <div class="spot-like">
-                    <% if user_signed_in? %>
-                      <% if current_user.already_liked?(t) %>
-                        <%= link_to spot_like_path(id: t.id, spot_id: t.id), method: :delete do %>
-                          <i class="fas fa-heart"></i><%= t.likes.count %>
-                        <% end %>
-                      <% else %>
-                        <%= link_to spot_likes_path(id: t.id, spot_id: t.id), method: :post do %>
-                          <i class="far fa-heart"></i><%= t.likes.count %>
-                        <% end %>
-                      <% end %>
-                    <% else %>
-                      <%= link_to new_user_session_path do %>
-                        <%= link_to new_user_session_path do %>
-                          <i class="far fa-heart"></i><%= t.likes.count %>
-                        <% end %>
-                      <% end %>
-                    <% end %>
-                </div>
+                
               </div>
             </div>
           </div>

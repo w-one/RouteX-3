@@ -24,17 +24,22 @@
       </div>
       <div class="video-container">
           <div class="form-video">
-            <%= f.label :image %>
+            <%= f.label :image1 %>
           </div>
-          <%= f.file_field :image %>
+          <%= f.file_field :image, id: :spot_img %>
+          <p><%= f.check_box :remove_image %>クリア</p>
+
           <div class="form-video">
             <%= f.label :image2 %>
           </div>
-          <%= f.file_field :image2 %>
+          <%= f.file_field :image2, id: :spot_img %>
+          <p><%= f.check_box :remove_image2 %>クリア</p>
+            
           <div class="form-video">
             <%= f.label :image3 %>
           </div>
-          <%= f.file_field :image3 %>
+          <%= f.file_field :image3, id: :spot_img %>
+          <p><%= f.check_box :remove_image3 %>クリア</p>
             
       </div>
 

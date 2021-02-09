@@ -4,7 +4,7 @@
   <div class="main-top">
     <div class="n-show-user">
       <div class="n-show-userimage">
-        <% if note.user.profile_image.present? %>
+        <% if @note.user.profile_image.present? %>
           <a href="/users/<%= @note.user.id %>"><%= image_tag @note.user.profile_image_url, size: "30x30" %></a>
         <% else %>
           <a href="/users/<%= @note.user.id %>"><%= image_tag 'usericon.jpg' , size: "30x30" %></a>
@@ -22,7 +22,7 @@
         <% end %>
       </div>
     </div>
-  </div>      
+  </div>
   <div class="n-show-content">
     <div class="n-show-title">
       <%= @note.title %>

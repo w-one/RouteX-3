@@ -23,3 +23,4 @@ require("@rails/actiontext")
 window.$ = window.jQuery = require('jquery');
 
 // import '../css/tailwind.css';
+

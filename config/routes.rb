@@ -1,21 +1,31 @@
 Rails.application.routes.draw do
   
   
-  root 'home#index'
-  get 'home/show'
+  get 'home/index'             
+  get 'home/show'   
+
+  root to: "home#index"
   
 
   devise_for :users, controllers: {
     registrations: "users/registrations",
   }
 
+
+
+
   resources :users, only: [:create, :edit, :destroy, :show] do
     get :search, on: :collection
     member do
       get 'userhowto'
       get 'usernote'
+
+      get :following, :followers
     end
   end
+
+  resources :relationships, only: [:create, :destroy]
+
 
   resources :how_tos do
     resources :fights, only: [:create, :destroy]
@@ -33,7 +43,7 @@ Rails.application.routes.draw do
   end
   
 
-  resources :relationships, only: [:create, :destroy]
+  
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

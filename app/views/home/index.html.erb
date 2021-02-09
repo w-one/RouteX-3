@@ -100,7 +100,13 @@
                   </div>
                 </div>
                 <div class="home-contents-video">
-                  <a href="/spots/<%= t.id %>"><%= image_tag t.image_url, size: "220x142" if t.image? %></a>
+                  <a href="/spots/<%= t.id %>">
+                    <% if t.image.present? %>
+                      <%= image_tag t.image_url, size: "220x142" %>
+                    <% else %>
+                      <%= image_tag 'Photo.jpg', size: "220x142" %>
+                    <% end %>
+                  </a>
                 </div>
                 <div class="home-contents-text">
                   

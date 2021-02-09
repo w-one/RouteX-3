@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_07_123059) do
+ActiveRecord::Schema.define(version: 2021_02_09_032701) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -162,13 +162,13 @@ ActiveRecord::Schema.define(version: 2021_02_07_123059) do
   end
 
   create_table "relationships", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "follow_id"
+    t.integer "follower_id"
+    t.integer "following_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["follow_id"], name: "index_relationships_on_follow_id"
-    t.index ["user_id", "follow_id"], name: "index_relationships_on_user_id_and_follow_id", unique: true
-    t.index ["user_id"], name: "index_relationships_on_user_id"
+    t.index ["follower_id", "following_id"], name: "index_relationships_on_follower_id_and_following_id", unique: true
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
+    t.index ["following_id"], name: "index_relationships_on_following_id"
   end
 
   create_table "spot_images", force: :cascade do |t|
@@ -210,12 +210,16 @@ ActiveRecord::Schema.define(version: 2021_02_07_123059) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "username"
+    t.string "twitter"
+    t.string "facebook"
+    t.string "instagram"
     t.string "nickname"
     t.string "profile_image"
     t.text "profile"
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -235,6 +239,4 @@ ActiveRecord::Schema.define(version: 2021_02_07_123059) do
   add_foreign_key "post_tag_relations", "tags"
   add_foreign_key "questions", "notes"
   add_foreign_key "questions", "users"
-  add_foreign_key "relationships", "users"
-  add_foreign_key "relationships", "users", column: "follow_id"
 end

@@ -26,24 +26,23 @@ class User < ApplicationRecord
     self.archives.exists?(note_id: note.id)
   end
 
-  has_many :relationships
-  has_many :followings, through: :relationships, source: :follow
-  has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
-  has_many :followers, through: :reverse_of_relationships, source: :user
 
-  def follow(other_user)
-    unless self == other_user
-      self.relationships.find_or_create_by(follow_id: other_user.id)
-    end
-  end
+  has_many :following_relationships, foreign_key: "follower_id", class_name: "Relationship", dependent: :destroy
+  has_many :followings, through: :following_relationships
 
-  def unfollow(other_user)
-    relationship = self.relationships.find_by(follow_id: other_user.id)
-    relationship.destroy if relationship
-  end
+  has_many :follower_relationships, foreign_key: "following_id", class_name: "Relationship", dependent: :destroy
+  has_many :followers, through: :follower_relationships
 
   def following?(other_user)
-    self.followings.include?(other_user)
+    following_relationships.find_by(following_id: other_user.id)
+  end
+
+  def follow!(other_user)
+    following_relationships.create!(following_id: other_user.id)
+  end
+
+  def unfollow!(other_user)
+    following_relationships.find_by(following_id: other_user.id).destroy
   end
 
 
@@ -54,13 +53,14 @@ class User < ApplicationRecord
   validates :profile, length: { maximum: 200 } 
   validates :email, uniqueness: true
   validates :username, uniqueness: true
-        
+
   def email_required?
     false
   end
-        
+
   def email_changed?
     false
   end
+  
 
 end

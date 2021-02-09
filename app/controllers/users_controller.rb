@@ -16,13 +16,26 @@ class UsersController < ApplicationController
   end
 
 
-
   def userhowto
-    @user = User.find(params[:id]) 
+    @user = User.find(params[:id])
   end
 
   def usernote
-    @user = User.find(params[:id]) 
+    @user = User.find(params[:id])
+  end
+
+
+  
+  def following
+    @user  = User.find(params[:id])
+    @users = @user.followings
+    render 'show_follow'
+  end
+
+  def followers
+    @user  = User.find(params[:id])
+    @users = @user.followers
+    render 'show_follower'
   end
   
 end

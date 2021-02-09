@@ -254,6 +254,7 @@ header a {
   display: block;
   margin-top: 23px;
   margin-left: 18px;
+  width: 100%;
 }
 
 .spot-text-list {
@@ -261,10 +262,24 @@ header a {
   margin-top: 5px;
 }
 
+.spot-text-list a {
+  text-decoration: none;
+}
+
+.spot-text-list a:hover {
+  text-decoration: none;
+  background-color: #ffffff;
+  color: #333333;
+}
+
 .text-title {
   font-weight: bold;
   font-size: 20px;
-  color: #333333;
+  
+}
+
+.text-title a {
+  color: #1d1d1d;
 }
 
 .text-content {
@@ -275,6 +290,7 @@ header a {
 
 .user-container {
   display: flex;
+  
 }
 
 .user-container a {
@@ -285,6 +301,12 @@ header a {
   background-color: #ffffff;
   color: #333333;
   text-decoration: none;
+}
+
+.spot-text-top {
+  display: flex;
+  justify-content: space-between;
+
 }
 
 .userimage img {
@@ -319,7 +341,7 @@ header a {
 
 .spot-like {
   font-size: 30px;
-  padding-top: 20px;
+  
   padding-right: 30px;
   
 }

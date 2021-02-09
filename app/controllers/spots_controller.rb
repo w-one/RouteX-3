@@ -48,7 +48,7 @@ class SpotsController < ApplicationController
   private
 
   def spot_params
-    params.require(:spot).permit(:title, :text, :image, :image2, :image3, :lat, :lng, tag_ids: [])
+    params.require(:spot).permit(:title, :text, :image, :image2, :image3, :remove_image, :remove_image2, :remove_image3, :lat, :lng, tag_ids: [])
   end
   
 end

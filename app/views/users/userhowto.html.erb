@@ -1,4 +1,11 @@
 <div class="userpage">
+  <div class="search">
+    <h1>User search</h1>
+      <%= form_tag({controller:"users",action:"search"}, method: :get) do %>
+        <%= text_field_tag :search %>
+        <%= submit_tag 'search'  %>
+      <% end %>
+  </div>
   <div class="usertop-container">
     <div class="userpage-continer">
       <div class="userpage-left">
@@ -23,14 +30,48 @@
                 <%= link_to "編集", edit_user_registration_path %>
               <% end %>
             </div>
-            <div class="follow">
-              <%= render 'relationships/follow_button', user: @user %>
-            </div>
           <% end %>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="userpage-bottom">
+    <div class = "sns-link">
+      <ul class="profile-links">
+      
+        <% if @user.twitter.present? %>
+          <li class="profile-link">
+            <%= link_to @user.twitter, target: :_blank do %>
+              <i class="fab fa-twitter-square"></i>
+            <% end %>
+          </li>
+        <% end %>
+      
+        <% if @user.facebook.present? %>
+          <li class="profile-link">
+            <%= link_to @user.facebook, target: :_blank do %>
+              <i class="fab fa-facebook-square"></i>
+            <% end %>
+          </li>
+        <% end %>
+      
+        <% if @user.instagram.present? %>
+          <li class="profile-link">
+            <%= link_to @user.instagram, target: :_blank do %>
+              <i class="fab fa-instagram"></i>
+            <% end %>
+          </li>
+        <% end %>
+        </ul>
+    </div>
+
+    <div class="follow">
+        <%= render 'follow_form' %>
+        <%= render 'stats' %>
+    </div>
+  </div>
+
   <div class="select-list">
     <ul>
       <li class="v-video"><%= link_to 'Video', userhowto_user_path %></li>   

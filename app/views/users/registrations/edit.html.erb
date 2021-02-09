@@ -30,7 +30,39 @@
       <div class="form-user">
         <%= f.label :profile_image %>
       </div>
-        <%= f.file_field :profile_image %>
+        <%= f.file_field :profile_image, id: :user_img %>
+        
+        <p><%= f.check_box :remove_profile_image %>クリア</p>
+        <div class="form-profile-image">
+          <% if @user.profile_image.present? %>
+            <%= image_tag @user.profile_image_url, size: "100x100" %>
+          <% else %>
+            <%= image_tag 'usericon.jpg', size: "100x100" %>
+          <% end %>
+        </div>
+
+          <div class = "form-sns-link">
+            <h3> SNS URL </h3>
+            <div class="form-sns-group">
+              <%= f.label :twitter, 'Twitter URL', class: 'form-control' %>
+              <div class="user-field">
+                <%= f.text_field :twitter, placeholder: "Optional", class: "form-control" %>
+              </div>
+            </div>
+            <div class="form-sns-group">
+              <%= f.label :facebook, 'Facebook URL', class: 'form-control' %>
+              <div class="user-field">
+                <%= f.text_field :facebook, placeholder: "Optional", class: "form-control" %>
+              </div>
+            </div>
+            <div class="form-sns-group">
+              <%= f.label :instagram, 'Instagram URL', class: 'form-control' %>
+              <div class="user-field">
+                <%= f.text_field :instagram, placeholder: "Optional", class: "form-control" %>
+              </div>
+            </div>
+            
+          </div>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
@@ -48,7 +80,7 @@
       <% end %>
     </div>
     <div class="delete-account">
-      <h3>アカウントを削除</h3>
+      <h4>アカウントを削除</h4>
 
       <p> <%= button_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 

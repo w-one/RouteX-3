@@ -1,0 +1,5 @@
+class SpotImage < ApplicationRecord
+
+  
+
+end

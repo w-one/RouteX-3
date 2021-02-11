@@ -16,6 +16,9 @@ class Spot < ApplicationRecord
   has_many :tags, through: :post_tag_relations, dependent: :destroy
 
 
+  validates :title, presence: true
+
+
 
 
 end

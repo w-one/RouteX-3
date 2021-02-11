@@ -16,12 +16,12 @@ class HowTosController < ApplicationController
   end
 
   def create
-    how_to = HowTo.new(how_to_params)
-    how_to.user_id = current_user.id
-    if how_to.save!
+    @how_to = HowTo.new(how_to_params)
+    @how_to.user_id = current_user.id
+    if @how_to.save
       redirect_to :action => "index"
     else
-      redirect_to :action => "new"
+      render "new"
     end
   end
 
@@ -36,11 +36,11 @@ class HowTosController < ApplicationController
   end
 
   def update
-    how_to = HowTo.find(params[:id])
-    if how_to.update(how_to_params)
+    @how_to = HowTo.find(params[:id])
+    if @how_to.update(how_to_params)
       redirect_to :action => "show", :id => how_to.id
     else
-      redirect_to :action => "edit"
+      render "edit"
     end
   end
 

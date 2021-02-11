@@ -2,6 +2,13 @@ class SpotsController < ApplicationController
   layout 'spot'
 
   def index
+    if params[:search] == nil
+      @spots= Spot.all.page(params[:page]).per(6)
+    elsif params[:search] == ''
+      @spots= Spot.all.page(params[:page]).per(6)
+    else
+      @spots = Spot.where("title LIKE ? ",'%' + params[:search] + '%').or(Spot.where("text LIKE ? ", "%" + params[:search] + "%")).page(params[:page]).per(6)
+    end
     @spots = params[:tag_id].present? ? Tag.find(params[:tag_id]).spots : Spot.all.page(params[:page]).per(6)
   end
 
@@ -10,12 +17,12 @@ class SpotsController < ApplicationController
   end
 
   def create
-    spot = Spot.new(spot_params)
-    spot.user_id = current_user.id
-    if spot.save!
+    @spot = Spot.new(spot_params)
+    @spot.user_id = current_user.id
+    if @spot.save
       redirect_to :action => "index"
     else
-      redirect_to :action => "new"
+      render "new"
     end
   end
 
@@ -30,11 +37,11 @@ class SpotsController < ApplicationController
   end
 
   def update
-    spot = Spot.find(params[:id])
-    if spot.update(spot_params)
-      redirect_to :action => "show", :id => spot.id
+    @spot = Spot.find(params[:id])
+    if @spot.update(spot_params)
+      redirect_to :action => "show", :id => @spot.id
     else
-      redirect_to :action => "edit"
+      render "edit"
     end
   end
 

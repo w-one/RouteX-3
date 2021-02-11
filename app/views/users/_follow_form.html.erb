@@ -1,9 +1,15 @@
-<% unless current_user?(@user) %>
-  <div id="follow_form">
-  <% if current_user.following?(@user) %>
-    <%= render 'unfollow' %>
-  <% else %>
-    <%= render 'follow' %>
+<% if user_signed_in? %>
+  <% unless current_user?(@user) %>
+    <div class="follow_form">
+      <% if current_user.following?(@user) %>
+        <%= render 'unfollow' %>
+      <% else %>
+        <%= render 'follow' %>
+      <% end %>
+    </div>
   <% end %>
-  </div>
-<% end %>  
+<% else %>
+    <%= button_to new_user_session_path, class: "follow-btn" do %>
+      <i class="fas fa-user-plus"></i> Follow
+    <% end %>
+<% end %>

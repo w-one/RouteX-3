@@ -1,20 +1,12 @@
 <div class="form-container">
+  <div class="backform">
+    <%= link_to "＜戻る", :back %>
+  </div>
   <div class="form-contents">
 
       <%= form_with(model: how_to, local: true) do |form| %>
-        <% if how_to.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(how_to.errors.count, "error") %> prohibited this how_to from being saved:</h2>
-
-            <ul>
-              <% how_to.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
-
-
+      <%= render 'layouts/error_messages', model: form.object %>
+        
         <div class="title-field-container">
           <div class="form-title">
             <%= form.label :title %>

@@ -142,7 +142,11 @@
                 <div class="comment-left">
                   <div class="comment-user">
                     <div class="comment-userimage">
-                      <a href="/users/<%= @spot.user.id %>"><%= image_tag c.user.profile_image_url, size: "25x25" if c.user.profile_image? %></a>
+                      <% if @spot.user.profile_image.present? %>
+                        <a href="/users/<%= @spot.user.id %>"><%= image_tag c.user.profile_image_url, size: "25x25" %></a>
+                      <% else %>
+                        <a href="/users/<%= @spot.user.id %>"><%= image_tag 'usericon.jpg' , size: "25x25" %></a>
+                      <% end %>
                     </div>
                     <div class="comment-username"><a href="/users/<%= @spot.user.id %>"><%= c.user.username unless c.user.blank? %></a></div>
                   </div>

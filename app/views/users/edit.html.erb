@@ -1,0 +1,93 @@
+<div class="sign-form-container">
+  <div class="user-field-container">  
+    <%= link_to "＜戻る", :back %>
+    
+    <h2>プロフィールを編集</h2>
+
+    <%= form_with(model: @user, local: true) do |f| %>
+
+      <div class="form-user">
+        <%= f.label :username %>
+      </div>
+      <div class="user-field">
+        <%= f.text_field :username, autofocus: true, autocomplete: "ユーザーネーム" %>
+      </div>
+
+      <div class="form-user">
+        <%= f.label :nickname %>
+      </div>
+      <div class="user-field">
+        <%= f.text_field :nickname, autofocus: true, autocomplete: "名前" %>
+      </div>
+
+      <div class="form-user">
+        <%= f.label :profile %>
+      </div>
+        <%= f.text_area :profile, autofocus: true, :size => "49x3"  %>
+
+
+      <div class="form-user">
+        <%= f.label :profile_image %>
+      </div>
+      <div class="user-image-form">
+        <div class="file-field-image">
+          
+            <!-- <%= f.file_field :profile_image  , id: :user_img %> -->
+            <%= f.label :profile_imag, "画像を選択", class: "image_input_btn" %>
+            <%= f.file_field :profile_imag, class: "image_form" %>
+          <p><%= f.check_box :remove_profile_image %>クリア</p>
+        </div>
+        <div class="form-profile-image">
+          <% if @user.profile_image.present? %>
+            <%= image_tag @user.profile_image_url, size: "100x100" %>
+          <% else %>
+            <%= image_tag 'usericon.jpg', size: "100x100" %>
+          <% end %>
+        </div>
+    </div>
+          <div class = "form-sns-link">
+            <h3> SNS URL </h3>
+            <div class="form-sns-group">
+              <%= f.label :twitter, 'Twitter URL', class: 'form-control' %>
+              <div class="user-field">
+                <%= f.text_field :twitter, placeholder: "Optional", class: "form-control" %>
+              </div>
+            </div>
+            <div class="form-sns-group">
+              <%= f.label :facebook, 'Facebook URL', class: 'form-control' %>
+              <div class="user-field">
+                <%= f.text_field :facebook, placeholder: "Optional", class: "form-control" %>
+              </div>
+            </div>
+            <div class="form-sns-group">
+              <%= f.label :instagram, 'Instagram URL', class: 'form-control' %>
+              <div class="user-field">
+                <%= f.text_field :instagram, placeholder: "Optional", class: "form-control" %>
+              </div>
+            </div>
+            
+          </div>
+
+
+      <div class="update-actions">
+        <%= button_tag :type => "submit", :class =>"search-btn" do %>
+        <i class="fas fa-user-edit"></i> 編集
+        <% end %>
+      </div>
+    <% end %>
+    
+    <div class="logout">
+      <% if user_signed_in? %>
+        <%= button_to destroy_user_session_path, class: "logout-btn", method: :delete do %>
+          Log Out
+        <% end %>
+      <% end %>
+    </div>
+    <div class="delete-account">
+      <h4>アカウントを削除</h4>
+
+      
+
+    </div>
+  </div>
+</div>

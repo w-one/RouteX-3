@@ -1,9 +1,20 @@
-<% @user.followings.each do |user| %>
-<table>
-<tr>
-  <td>  <%= user.username %> </td>
-  <td><%= link_to '詳細', user_path(user) %></td>
-</tr>
 
-</table>
-<% end %>
+<div class="userpage-search">
+  <div class="follow-title">Following</div>
+    <div class="search-user-content">
+      <% @users.each do |user| %>
+        <div class="search-contents-user">
+          <div class="search-userimage">
+            <% if user.profile_image.present? %>
+              <a href="/users/<%= user.id %>"><%= image_tag user.profile_image_url, size: "50x50" %></a>
+            <% else %>
+              <a href="/users/<%= user.id %>"><%= image_tag 'usericon.jpg' , size: "50x50" %></a>
+            <% end %>
+          </div>
+          <div class="search-username"><a href="/users/<%= user.id %>"><%= user.username %></a></div>
+        </div>
+      <% end %>
+    </div>
+</div>
+
+

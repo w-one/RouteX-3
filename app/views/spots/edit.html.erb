@@ -4,6 +4,7 @@
   </div>
   <div class="form-contents">
     <%= form_with(model: @spot, local: true) do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
       <div class="title-field-container">
         <div class="form-title">
           <%= f.label :title %>
@@ -19,40 +20,54 @@
         <div class="content-field">
             <%= f.text_area :text, :size => "67x5" %>
         </div>
-      </div>
-      <div class="video-container">
+
+      <div class="form-image-container">
+        <div class="video-container">
           <div class="form-video">
-            <%= f.label :image %>
+            <%= f.label :image1 %>
           </div>
-            <%= f.file_field :image1, id: :spot_img %>
+            <!-- <%= f.file_field :image1, id: :spot_img %> -->
+            <%= f.label :image, "画像を選択", class: "spot_image-btn" %>
+            <%= f.file_field :image, class: "image_form" %>
             <p><%= f.check_box :remove_image %>クリア</p>
               <% if @spot.image.present? %>
                 <%= image_tag @spot.image_url, size: "120x80" %>
               <% else %>
                 <%= image_tag 'Photo.jpg', size: "120x80" %>
               <% end %>
-          <div class="form-video">
-            <%= f.label :image2 %>
           </div>
-            <%= f.file_field :image2, id: :spot_img %>
-            <p><%= f.check_box :remove_image2 %>クリア</p>
-              <% if @spot.image2.present? %>
-                <%= image_tag @spot.image2_url, size: "120x80" %>
-              <% else %>
-                <%= image_tag 'Photo.jpg', size: "120x80" %>
-              <% end %>
+        
+          <div class="video-container">
+            <div class="form-video">
+              <%= f.label :image2 %>
+            </div>
+            
+              <!-- <%= f.file_field :image2, id: :spot_img %> -->
+              <%= f.label :image2, "画像を選択", class: "spot_image-btn" %>
+              <%= f.file_field :image2, class: "image_form" %>
+              <p><%= f.check_box :remove_image2 %>クリア</p>
+                <% if @spot.image2.present? %>
+                  <%= image_tag @spot.image2_url, size: "120x80" %>
+                <% else %>
+                  <%= image_tag 'Photo.jpg', size: "120x80" %>
+                <% end %>
+            </div>
 
-          <div class="form-video">
-            <%= f.label :image3 %>
-          </div>
-            <%= f.file_field :image3, id: :spot_img %>
+          <div class="video-container">
+            <div class="form-video">
+              <%= f.label :image3 %>
+            </div>
+            <!-- <%= f.file_field :image3, id: :spot_img %> -->
+            <%= f.label :image3, "画像を選択", class: "spot_image-btn" %>
+            <%= f.file_field :image3, class: "image_form" %>
             <p><%= f.check_box :remove_image3 %>クリア</p>
               <% if @spot.image3.present? %>
                 <%= image_tag @spot.image3_url, size: "120x80" %>
               <% else %>
                 <%= image_tag 'Photo.jpg', size: "120x80" %>
               <% end %>
-      </div>
+          </div>
+        </div>
 
           <div class='form-tag-group'>
             <div class="form-tag-name">
@@ -70,12 +85,12 @@
             </div>
           </div>
 
-          <!-- <div class='form-group'>
+          <div class='lat-lng'>
             <%= f.label :lat,"緯度" %>
             <%= f.text_field :lat,:value =>"緯度", id: :lat %>
             <%= f.label :lng,"経度" %>
             <%= f.text_field :lng,:value =>"経度", id: :lng %>
-          </div> -->
+          </div>
 
           
 
@@ -86,7 +101,7 @@
           
           <input id="address" type="textbox" value="スポット付近">
           <input type="button" value="検索" onclick="codeAddress()">
-          <p>マーカーをドラック＆ドロップで位置の調整ができます。<p>
+          <h4>マーカーをドラック＆ドロップで位置の調整ができます。</h4>
           <div id='map'></div>
           
           <style>
@@ -134,14 +149,16 @@
                   aft = true
           
                   //検索した時に緯度経度を入力する
-                  // document.getElementById('lat').value = results[0].geometry.location.lat();
-                  // document.getElementById('lng').value = results[0].geometry.location.lng();
+                  document.getElementById('lat').value = results[0].geometry.location.lat();
+                  document.getElementById('lng').value = results[0].geometry.location.lng();
           
                   // マーカーのドロップ（ドラッグ終了）時のイベント
                   google.maps.event.addListener( marker, 'dragend', function(ev){
                       // イベントの引数evの、プロパティ.latLngが緯度経度
                       document.getElementById('lat').value = ev.latLng.lat();
+                      // results[0].geometry.location.lat() = ev.latLng.lat();
                       document.getElementById('lng').value = ev.latLng.lng();
+                      // results[0].geometry.location.lng() = ev.latLng.lng();
                   });
               } else {
                 alert('該当する結果がありませんでした：' + status);
@@ -151,7 +168,7 @@
           
           </script>
           <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
-    </div>
+      </div>
         
       <%= f.submit "　　　投稿　　　" %>
     <% end %>    

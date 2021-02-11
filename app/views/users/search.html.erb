@@ -1,23 +1,26 @@
-<div class="search">
-  <h1>User search</h1>
-  <%= form_tag({controller:"users",action:"search"}, method: :get) do %>
-    <%= text_field_tag :search %>
-    <%= submit_tag 'search'  %>
-  <% end %>
-</div>
-    <% @users.each do |user| %>
-
-        <div class="home-contents-user">
-          <div class="home-v-userimage">
+<div class="userpage-search">
+  <div class="user-search-content">
+    <h1>User search</h1>
+    <%= form_tag({controller:"users",action:"search"}, method: :get) do %>
+      <%= text_field_tag :search %>
+      <%= button_tag :type => "submit", :class =>"search-btn" do %>
+        <i class="fas fa-search"></i>
+      <% end %>
+    <% end %>
+  </div>
+    <div class="search-user-content">
+      <% @users.each do |user| %>
+        <div class="search-contents-user">
+          <div class="search-userimage">
             <% if user.profile_image.present? %>
-              <a href="/users/<%= user.id %>"><%= image_tag user.profile_image_url, size: "30x30" %></a>
+              <a href="/users/<%= user.id %>"><%= image_tag user.profile_image_url, size: "50x50" %></a>
             <% else %>
-              <a href="/users/<%= user.id %>"><%= image_tag 'usericon.jpg' , size: "30x30" %></a>
+              <a href="/users/<%= user.id %>"><%= image_tag 'usericon.jpg' , size: "50x50" %></a>
             <% end %>
           </div>
-          <div class="home-v-username"><a href="/users/<%= user.id %>"><%= user.username %></a></div>
+          <div class="search-username"><a href="/users/<%= user.id %>"><%= user.username %></a></div>
         </div>
-
-    <% end %>
-
+      <% end %>
+    </div>
+</div>
 

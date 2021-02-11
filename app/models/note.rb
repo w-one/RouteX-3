@@ -7,5 +7,6 @@ class Note < ApplicationRecord
   has_many :archived_users, through: :archives, source: :user
   has_many :questions, dependent: :destroy
 
-
+  validates :content, presence: true
+  validates :title, presence: true
 end

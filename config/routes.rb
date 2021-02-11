@@ -1,20 +1,19 @@
 Rails.application.routes.draw do
   
   
-  get 'home/index'             
-  get 'home/show'   
+  get 'home/index'      
+  get 'home/show'
 
   root to: "home#index"
   
 
-  devise_for :users, controllers: {
-    registrations: "users/registrations",
-  }
+  # devise_for :users, controllers: {
+  #   registrations: "users/registrations",
+  # }
+  devise_for :users
 
 
-
-
-  resources :users, only: [:create, :edit, :destroy, :show] do
+  resources :users do
     get :search, on: :collection
     member do
       get 'userhowto'

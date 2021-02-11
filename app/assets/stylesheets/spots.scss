@@ -180,23 +180,23 @@ header a {
 
 
 .main {
-  margin: 20px auto 150px auto;
+  margin: 15px auto 150px auto;
   max-width: 900px;
   min-width: 700px;
 
 }
 
 .main-top {
-  background-color: rgb(255, 255, 255);
+
   width: auto;
   height: 50px;
   justify-content: space-between;
   display: flex;
 }
 
-.search {
-  margin-left: 30px;
-  margin-top: 10px;
+.tag-search {
+  margin-top: 15px;
+  margin-right: 130px;
 }
 
 .new {
@@ -272,7 +272,7 @@ header a {
   color: #333333;
 }
 
-.text-title {
+.text-title { 
   font-weight: bold;
   font-size: 20px;
   
@@ -311,6 +311,7 @@ header a {
 
 .userimage img {
   border-radius: 50%;
+  border: solid 2px #888;
 }
 
 .username {
@@ -419,6 +420,7 @@ header a {
   height: 33px;
   object-fit:cover;
   border-radius: 50%;
+  border: solid 2px #888;
 }
 
 .show-username {
@@ -597,6 +599,7 @@ nav a:hover {
   left: 0;
   overflow: hidden;
   color: #ffcc33;
+
 }
 .star-rating-back {
   display: inline-block;
@@ -617,6 +620,7 @@ nav a:hover {
 .comment-contents {
   margin-left: 40px;
 }
+
 
 .comment-show {
   display: flex;
@@ -648,6 +652,7 @@ nav a:hover {
   height: 28px;
   object-fit:cover;
   border-radius: 50%;
+  border: solid 1px #666;
 }
 
 .comment-username {
@@ -709,13 +714,20 @@ nav a:hover {
   font-size: 25px;
 }
 
+.form-image-container {
+  display: flex;
+  width: 100%;
+}
+
 .form-video {
   font-size: 25px;
+  margin-top: 20px;
 }
 
 .video-container {
-  width: 70%;
-  margin: 10px auto;
+  
+  margin: 10px auto auto 30px;
+  
 }
 
 .actions {
@@ -723,7 +735,30 @@ nav a:hover {
   margin: 15px auto;
 }
 
+.spot_image-btn {
+  margin-top: 10px;
+  display: block;
+  background-color: rgb(247, 247, 247);
+  border-radius: 20px;
+  border: solid 2px #333333;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #333;
+  text-decoration: none;
+  text-align: center;
+  width: 100px;
+  font-size: 18px;
+}
 
+.spot_image-btn:hover {
+  background-color: #333333;
+  color: rgb(243, 243, 243);
+}
+
+.image_form{
+  display: none;
+}
 
 .form-tag-group {
   margin: 30px 0;
@@ -764,4 +799,11 @@ nav a:hover {
   text-decoration: none;
   color: #333333;
   background-color:  rgb(255, 240, 221);
+}
+
+
+.lat-lng {
+  display: none;
+  height: 0;
+  width: 0;
 }

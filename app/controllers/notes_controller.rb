@@ -16,12 +16,12 @@ class NotesController < ApplicationController
   end
 
   def create
-    note = Note.new(note_params)
-    note.user_id = current_user.id
-    if note.save!
+    @note = Note.new(note_params)
+    @note.user_id = current_user.id
+    if @note.save
       redirect_to :action => "index"
     else
-      redirect_to :action => "new"
+      render "new"
     end
   end
 
@@ -36,11 +36,11 @@ class NotesController < ApplicationController
   end
 
   def update
-    note = Note.find(params[:id])
-    if note.update(note_params)
+    @note = Note.find(params[:id])
+    if @note.update(note_params)
       redirect_to :action => "show", :id => note.id
     else
-      redirect_to :action => "edit"
+      render "edit"
     end
   end
 

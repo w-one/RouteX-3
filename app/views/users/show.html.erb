@@ -1,129 +1,125 @@
-
-<div class="userpage">
-  <div class="search">
-    <h1>User search</h1>
-      <%= form_tag({controller:"users",action:"search"}, method: :get) do %>
-        <%= text_field_tag :search %>
-        <%= submit_tag 'search'  %>
-      <% end %>
-  </div>
-  <div class="usertop-container">
-    <div class="userpage-continer">
-      <div class="userpage-left">
-        <div class="profileimage">
-          <% if @user.profile_image.present? %>
-            <%= image_tag @user.profile_image_url, size: "90x90" %>
-          <% else %>
-            <%= image_tag 'usericon.jpg' , size: "90x90" %>
+<main>
+    <div class="userpage">
+      <div class="search">
+        <h1>User search</h1>
+          <%= form_tag({controller:"users",action:"search"}, method: :get) do %>
+            <%= text_field_tag :search %>
+            <%= button_tag :type => "submit", :class =>"search-btn" do %>
+              <i class="fas fa-search"></i>
+            <% end %>
           <% end %>
-        </div>
-        <div class="information">
-          <h1><%= @user.nickname %></h1>
-          <p><%= @user.username %></p>
-          <p><%= @user.profile %></p>
-        </div>
       </div>
-      <div class="userpage-right">
-        <div class="edit-follow">
-          <% if user_signed_in? %>
-            <div class="edit">
-              <% if current_user.id == @user.id %>
-                <%= link_to "編集", edit_user_registration_path %>
+      <div class="usertop-container">
+        <div class="userpage-continer">
+          <div class="userpage-left">
+            <div class="profileimage">
+              <% if @user.profile_image.present? %>
+                <%= image_tag @user.profile_image_url, size: "90x90" %>
+              <% else %>
+                <%= image_tag 'usericon.jpg' , size: "90x90" %>
               <% end %>
             </div>
-          <% end %>
+            <div class="information">
+              <div class="user-nickname"><%= @user.nickname %></div>
+              <div class="user-username"><%= @user.username %></div>
+              <div class="user-profile"><%= @user.profile %></div>
+            </div>
+          </div>
+          <div class="userpage-right">
+            <div class="edit-follow">
+              <% if user_signed_in? %>
+                <div class="edit">
+                  <% if current_user.id == @user.id %>
+                    <%= link_to "編集", edit_user_path %>
+                  <% end %>
+                </div>
+              <% end %>
+              <div class="follow-button">
+                <%= render 'follow_form' %>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  
-  <div class="userpage-bottom">
-    <div class = "sns-link">
-      <ul class="profile-links">
-      
-        <% if @user.twitter.present? %>
-          <li class="profile-link">
-            <%= link_to @user.twitter, target: :_blank do %>
-              <i class="fab fa-twitter-square"></i>
-            <% end %>
-          </li>
-        <% end %>
-      
-        <% if @user.facebook.present? %>
-          <li class="profile-link">
-            <%= link_to @user.facebook, target: :_blank do %>
-              <i class="fab fa-facebook-square"></i>
-            <% end %>
-          </li>
-        <% end %>
-      
-        <% if @user.instagram.present? %>
-          <li class="profile-link">
-            <%= link_to @user.instagram, target: :_blank do %>
-              <i class="fab fa-instagram"></i>
-            <% end %>
-          </li>
-        <% end %>
-        </ul>
-    </div>
 
-    <div class="follow">
-        <%= render 'follow_form' %>
-        <%= render 'stats' %>
-    </div>
-  </div>
-
-  
-
-  <div class="select-list">
-      <ul>
-        <li class="s-video"><%= link_to 'Video', userhowto_user_path %></li>   
-        <li class="s-spot"><%= link_to 'Spot', :controller => "users", :action => "show" %></li>
-        <li class="s-note"><%= link_to 'note', usernote_user_path %></li>      
-      </ul>
-  </div>
-
-  <div class="s-post-container"></div>
-    <% @user.spots.each do |t| %>
-      
-        <div class="s-post-item">
-          <div class="s-text">
-            <div class="s-text-list">
-              <ul>
-                <li class="text"><%= t.title %></li>
-                <li><i class="far fa-heart"></i><%= t.likes.count %></li>
-                <li class="tag">
-                  <% t.tags.each do |tag| %>
-                    <div class="mypatag-name">
-                      <%= tag.name %>
-                    </div>
-                  <% end %>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="s-image-container">
-            <div class="s-image">
-              <a href="/spots/<%= t.id %>">
-                <% if t.image.present? %>
-                  <%= image_tag t.image_url, size: "300x220" %>
-                <% else %>
-                  <%= image_tag 'Photo.jpg', size: "300x220" %>
+      <div class="userpage-bottom">
+        <div class = "sns-link">
+          <ul class="profile-links">
+          
+            <% if @user.twitter.present? %>
+              <li class="profile-link">
+                <%= link_to @user.twitter, target: :_blank do %>
+                  <i class="fab fa-twitter-square"></i>
                 <% end %>
-              </a>
-            </div>
+              </li>
+            <% end %>
+          
+            <% if @user.facebook.present? %>
+              <li class="profile-link">
+                <%= link_to @user.facebook, target: :_blank do %>
+                  <i class="fab fa-facebook-square"></i>
+                <% end %>
+              </li>
+            <% end %>
+          
+            <% if @user.instagram.present? %>
+              <li class="profile-link">
+                <%= link_to @user.instagram, target: :_blank do %>
+                  <i class="fab fa-instagram"></i>
+                <% end %>
+              </li>
+            <% end %>
+            </ul>
+        </div>
+
+        <div class="follow">
+          
+          <div class="follow-status">
+            <%= render 'stats' %>
           </div>
         </div>
-      
-    <% end %>
-  </div>  
-  
+      </div>
 
+      <div class="select-list">
+          <ul>
+            <li class="s-video"><%= link_to 'Video', userhowto_user_path %></li>   
+            <li class="s-spot"><%= link_to 'Spot', :controller => "users", :action => "show" %></li>
+            <li class="s-note"><%= link_to 'note', usernote_user_path %></li>      
+          </ul>
+      </div>
 
-
-
-      
-    
-
-
-</div>
+      <div class="s-post-container">
+        <% @user.spots.each do |t| %>
+            <div class="s-post-item">
+              <div class="s-text">
+                <div class="s-text-list">
+                  <ul>
+                    <li class="text"><%= t.title %></li>
+                    <li><i class="far fa-heart"></i><%= t.likes.count %></li>
+                    <li class="tag">
+                      <% t.tags.each do |tag| %>
+                        <div class="mypage-tag-name">
+                          <%= tag.name %>
+                        </div>
+                      <% end %>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="s-image-container">
+                <div class="s-image">
+                  <a href="/spots/<%= t.id %>">
+                    <% if t.image.present? %>
+                      <%= image_tag t.image_url, size: "300x220" %>
+                    <% else %>
+                      <%= image_tag 'Photo.jpg', size: "300x220" %>
+                    <% end %>
+                  </a>
+                </div>
+              </div>
+            </div>
+          
+        <% end %>
+      </div>  
+    </div>
+</main>

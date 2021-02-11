@@ -10,4 +10,8 @@ class HowTo < ApplicationRecord
   has_many :fought_users, through: :fights, source: :user
   
   has_many :advices, dependent: :destroy
+
+  validates :title, presence: true
+  validates :video, presence: true
+  validates :content, presence: true
 end

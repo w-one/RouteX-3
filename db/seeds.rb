@@ -9,6 +9,7 @@ Tag.create([
   { name: 'パーク' },
   { name: 'ストリート' },
   { name: 'アール'},
+  { name: 'ステア' },
   { name: 'ウォール'},
   { name: 'カーブ' },
   { name: 'ボックス' },
